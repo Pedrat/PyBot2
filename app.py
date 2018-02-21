@@ -42,7 +42,7 @@ def webhook():
                     if message_text == "Ajuda!":
                         send_message(sender_id,"Com o que podemos ajudar?")
                     elif message_text == "Que dia é hoje?":
-                        send_message(sender_id,("{}: {}".format(datetime.now()))
+                        send_message(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y")))
                     else:
                         send_message(sender_id, "Coco!")
 
