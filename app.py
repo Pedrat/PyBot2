@@ -42,7 +42,7 @@ def webhook():
                     if message_text == "Ajuda!":
                         send_message(sender_id,"Com o que podemos ajudar?")
                     elif message_text == "whoami":
-                        send_message(sender_id,send_id)
+                        send_message(sender_id,sender_id)
                     else:
                         send_message(sender_id, "Coco!")
 
