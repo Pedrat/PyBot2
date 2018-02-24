@@ -34,7 +34,7 @@ def webhook():
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
-
+                exemplos = ["Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não consigo lhe ajudar..."]
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -45,7 +45,8 @@ def webhook():
                         elif message_text == "Que dia e hoje?":
                             send_message(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         else:
-                            msg = get_message()
+
+                            msg = random.choice(exemplos)
                             send_message(sender_id, msg)
 
                     if messaging_event['message'].get('attachments'):
