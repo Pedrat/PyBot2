@@ -40,7 +40,7 @@ def webhook():
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         listasender.append(sender_id)
-                        file = ("ID.txt","a")
+                        file = open("ID.txt","a")
                         for x in listasender:
                             file.write(x)
                         file.close()
