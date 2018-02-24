@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import random
 from datetime import datetime
 #TESTE
 import requests
@@ -46,6 +47,12 @@ def webhook():
                     else:
                         send_message(sender_id, "Coco!")
 
+                if messaging_event.get("attachments"):
+                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                    #message_text = messaging_event["message"]["text"]  # the message's text
+                    msg = get_message
+                    send_message(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
@@ -93,6 +100,9 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
 
+def get_message():
+    exemplos= ["Lindo/a","Que giro","Wow"]
+    return random.choice(exemplos)
 
 if __name__ == '__main__':
     app.run(debug=True)
