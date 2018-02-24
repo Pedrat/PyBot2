@@ -39,7 +39,7 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                        listasender.append(sender_id)
+                        listasender.append(sender_id+'\n')
                         file = open("ID.txt","a")
                         for x in listasender:
                             file.write(x)
@@ -105,7 +105,7 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         print "{}: {}".format(datetime.now(), msg)
         print "TESTE DE DEBUGGING:"
         for x in open("ID.txt",'r'):
-            print x 
+            print x
     except UnicodeEncodeError:
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
