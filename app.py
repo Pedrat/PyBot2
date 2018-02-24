@@ -3,7 +3,7 @@ import sys
 import json
 import random
 from datetime import datetime
-#TESTE
+#TESTE2
 import requests
 from flask import Flask, request
 
