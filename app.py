@@ -7,8 +7,14 @@ from datetime import datetime
 listasender=[]
 import requests
 from flask import Flask, request
-
+date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
+
+if date == "24/02":
+    for x in open("ID.txt",'r'):
+        send_message(x,"Parabéns!!!")
+
+
 
 
 @app.route('/', methods=['GET'])
@@ -39,11 +45,7 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                        listasender.append(sender_id+'\n')
-                        file = open("ID.txt","a")
-                        for x in listasender:
-                            file.write(x)
-                        file.close()
+                        save(sender_id)
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         message_text = messaging_event["message"]["text"]  # the message's text
                         if message_text == "Ajuda!":
@@ -94,6 +96,14 @@ def send_message(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
+
+def save(id):
+    listasender.append(sender_id+'\n')
+    file = open("ID.txt","a")
+    #for x in listasender:
+    file.write(id)
+    file.close()
+
 
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
