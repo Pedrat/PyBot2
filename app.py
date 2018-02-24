@@ -98,7 +98,7 @@ def send_message(recipient_id, message_text):
         log(r.text)
 
 def save(id):
-    listasender.append(sender_id+'\n')
+    #listasender.append(sender_id+'\n')
     file = open("ID.txt","a")
     #for x in listasender:
     file.write(id)
