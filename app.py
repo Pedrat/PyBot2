@@ -39,7 +39,7 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                        file=open("ID.txt",'a')
+                        file = open("ID.txt",'a')
                         file.write(sender_id)
                         file.close()
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
@@ -49,7 +49,6 @@ def webhook():
                         elif message_text == "Que dia e hoje?":
                             send_message(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         else:
-
                             msg = random.choice(exemplos)
                             send_message(sender_id, msg)
 
