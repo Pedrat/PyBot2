@@ -39,6 +39,9 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                        file=open("ID.txt",'a')
+                        file.write(sender_id)
+                        file.close()
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         message_text = messaging_event["message"]["text"]  # the message's text
                         if message_text == "Ajuda!":
