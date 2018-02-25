@@ -11,6 +11,7 @@ date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
 
 if date == "25/02":
+    print("AQUI")
     for x in listasender:
         send_message(x,"Parabéns!!!")
 
