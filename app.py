@@ -114,7 +114,8 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
             msg = (msg).format(*args, **kwargs)
         print "{}: {}".format(datetime.now(), msg)
         print "TESTE DE DEBUGGING:"
-        for x in open("ID.txt",'r'):
+        print date
+        for x in listasender:
             print x
     except UnicodeEncodeError:
         pass  # squash logging errors in case of non-ascii text
