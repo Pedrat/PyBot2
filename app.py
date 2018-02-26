@@ -5,7 +5,7 @@ import json
 import random
 import fb
 import facebook
-from fbmq import Page , Template, Attachment, QuickReply
+from fbmq import page , Template, Attachment, QuickReply
 from datetime import datetime
 listasender=["1838746479497346"]
 #TESTE CATIA
@@ -92,7 +92,7 @@ def webhook():
     return "ok", 200
 
 '''
-def page.send(recipient_id, message_text):
+def send_message(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
