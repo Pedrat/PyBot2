@@ -66,7 +66,7 @@ def webhook():
                         #typeatt= messaging_event["type"]
                         #print typeatt
                         teste=messaging_event['message'].get('attachments')
-                        print teste.get("type"), "TESTE"
+                        print teste, "TESTE"
                         
                         msg = get_message()
                         send_message(sender_id,msg)
