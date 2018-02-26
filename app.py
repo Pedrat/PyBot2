@@ -71,6 +71,7 @@ def webhook():
                         teste=messaging_event["message"]["attachments"]
                         #print teste, "FUCK THIS SHIT"
                         #print teste, "TESTE"
+                        print teste
                         if u'image' in teste:
                             print "MAMBOS TRUE"
                         else:
