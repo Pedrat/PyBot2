@@ -4,6 +4,8 @@ import sys
 import json
 import random
 import fb
+import facebook
+from fbmq import Page, Template, Attachment, QuickReply
 from datetime import datetime
 listasender=["1838746479497346"]
 #TESTE CATIA
@@ -71,7 +73,7 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         teste=messaging_event["message"]["attachments"]
 
-                        
+
                         if 'image' in str(teste[0]):
                             msg=get_message('image')
                         elif 'file' in str(teste[0]):
@@ -83,7 +85,7 @@ def webhook():
                         else:
                             msg = "Já o vou ver"
                         #msg = get_message()
-                        send_message(sender_id,msg)
+                        page.send(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
@@ -128,16 +130,11 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         else:
             msg = (msg).format(*args, **kwargs)
         print "{}: {}".format(datetime.now(), msg)
-        #print "TESTE DE DEBUGGING:"
-        #print date
-        #for x in listasender:
-            #print x
     except UnicodeEncodeError:
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
 
 def get_message(tipo):
-
     if tipo == 'image':
         exemplos= ["Lindo/a","Que giro","Wow"]
     if tipo == 'video':
