@@ -64,8 +64,8 @@ def webhook():
                             print friends_and_education
                             #facebook.publish(cat="feed", id="me", message="My facebook status")
                         else:
-                            #msg = random.choice(exemplos)
-                            send_message(sender_id, ":D")
+                            msg = random.choice(exemplos)
+                            send_message(sender_id, msg)
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
