@@ -79,7 +79,7 @@ def webhook():
                         elif 'video' in str(teste[0]):
                             msg=get_message('video')
                         elif 'audio' in str(teste[0]):
-                            sg=get_message('audio')
+                            msg=get_message('audio')
                         else:
                             msg = "Já o vou ver"
                         #msg = get_message()
