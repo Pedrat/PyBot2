@@ -8,7 +8,7 @@ import facebook
 from fbmq import page , Template, Attachment, QuickReply
 from datetime import datetime
 listasender=["1838746479497346"]
-#TESTE CATIA
+#TESTE CATIA2
 moderators=[]
 token= 351316092049412
 facebook=fb.graph.api(token)
