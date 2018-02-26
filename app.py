@@ -5,7 +5,7 @@ import json
 import random
 import fb
 #import facebook
-from fbmq import page , Template, Attachment, QuickReply
+from fbmq import Page , Template, Attachment, QuickReply
 from datetime import datetime
 listasender=["1838746479497346"]
 #TESTE CATIA2
