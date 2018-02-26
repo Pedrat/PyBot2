@@ -59,8 +59,9 @@ def webhook():
                         elif message_text == "Que dia e hoje?":
                             send_message(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == "Publica-me isto sff":
-                            send_message(sender_id,"Ok! :D")                            
-                            facebook.publish(cat="feed", id="me", message="My facebook status")
+                            send_message(sender_id,"Ok! :D")
+                            friends_and_education=facebook.get_object(cat=’single’, id=’me’, fields=[‘friends’, ‘education’])
+                            #facebook.publish(cat="feed", id="me", message="My facebook status")
                         else:
                             msg = random.choice(exemplos)
                             send_message(sender_id, msg)
