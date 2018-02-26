@@ -68,7 +68,7 @@ def webhook():
 ##                            #message_text = messaging_event["message"]["text"]  # the message's text
                         #typeatt= messaging_event["type"]
                         #print typeatt
-                        teste=messaging_event["message"]
+                        teste=messaging_event["message"]["attachments"]
                         #print teste, "TESTE"
                       
                         for x in teste:
