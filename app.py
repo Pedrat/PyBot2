@@ -142,7 +142,7 @@ def get_message(tipo):
         exemplos= ["Lindo/a","Que giro","Wow"]
     if tipo == 'video':
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
-     if tipo == 'audio':
+    if tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
     return random.choice(exemplos)
 
