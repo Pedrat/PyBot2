@@ -76,6 +76,8 @@ def webhook():
                             msg=get_message('image')
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
+                        elif 'video' in str(teste[0]):
+                            msg=get_message('video') 
                         else:
                             msg = "Já o vou ver"
                         #msg = get_message()
@@ -137,7 +139,7 @@ def get_message(tipo):
     if tipo == 'image':
         exemplos= ["Lindo/a","Que giro","Wow"]
     if tipo == 'video':
-        exemplos=["derp"]
+        exemplos=["ja vejo esse video", "video giro", "say wahaaaaa!"]
     return random.choice(exemplos)
 
 if __name__ == '__main__':
