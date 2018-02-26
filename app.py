@@ -66,8 +66,12 @@ def webhook():
                         #typeatt= messaging_event["type"]
                         #print typeatt
                         teste=messaging_event['message'].get('attachments')
-                        print teste, "TESTE"
-                        
+                        #print teste, "TESTE"
+                        for x in teste:
+                            if u'image' in x:
+                                print "MAMBOS TRUE"
+                            else:
+                                print "MAMBOS FALSE"
                         msg = get_message()
                         send_message(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
