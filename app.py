@@ -21,7 +21,7 @@ app = Flask(__name__)
 if date == "26/02":
     print("AQUI")
     for x in listasender:
-        send_message(x,"Parabéns!!!")
+        page.send(x,"Parabéns!!!")
 '''
 
 
@@ -57,17 +57,17 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         message_text = messaging_event["message"]["text"]  # the message's text
                         if message_text == "Ajuda!":
-                            send_message(sender_id,"Com o que podemos ajudar?")
+                            page.send(sender_id,"Com o que podemos ajudar?")
                         elif message_text == "Que dia e hoje?":
-                            send_message(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
+                            page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == "Publica-me isto sff":
-                            send_message(sender_id,"Ok! :D")
+                            page.send(sender_id,"Ok! :D")
                             friends_and_education=facebook.get_object(cat='single', id='me', fields=['friends', 'education'])
                             print friends_and_education
                             #facebook.publish(cat="feed", id="me", message="My facebook status")
                         else:
                             msg = random.choice(exemplos)
-                            send_message(sender_id, msg)
+                            page.send(sender_id, msg)
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
@@ -97,8 +97,8 @@ def webhook():
 
     return "ok", 200
 
-
-def send_message(recipient_id, message_text):
+'''
+def page.send(recipient_id, message_text):
 
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
@@ -119,7 +119,7 @@ def send_message(recipient_id, message_text):
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
-        log(r.text)
+        log(r.text)'''
 
 
 
