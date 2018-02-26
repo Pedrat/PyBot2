@@ -6,7 +6,7 @@ import random
 from datetime import datetime
 listasender=[]
 #TESTE CATIA
-
+moderators=[]
 
 import requests
 from flask import Flask, request
@@ -49,7 +49,6 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                        save(sender_id)
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         message_text = messaging_event["message"]["text"]  # the message's text
                         if message_text == "Ajuda!":
@@ -64,6 +63,9 @@ def webhook():
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                             #message_text = messaging_event["message"]["text"]  # the message's text
+                        typeatt= messaging_event["type"]
+                        print typeatt
+                        #if messaging_event['message'].get('attachments').get():
                         msg = get_message()
                         send_message(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
@@ -100,13 +102,6 @@ def send_message(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
-
-def save(id):
-    listasender.append(id)
-    file = open("ID.txt","a")
-    #for x in listasender:
-    file.write(id)
-    file.close()
 
 
 
