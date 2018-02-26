@@ -3,10 +3,13 @@ import os
 import sys
 import json
 import random
+import fb
 from datetime import datetime
 listasender=["1838746479497346"]
 #TESTE CATIA
 moderators=[]
+token= 351316092049412
+facebook=fb.graph.api(token)
 
 import requests
 from flask import Flask, request
@@ -18,7 +21,8 @@ if date == "26/02":
     for x in listasender:
         send_message(x,"Parabéns!!!")
 '''
-
+if date == "26/02":
+    facebook.publish(cat="feed", id="me", message="My facebook status")
 
 
 @app.route('/', methods=['GET'])
