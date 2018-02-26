@@ -3,13 +3,13 @@ import os
 import sys
 import json
 import random
-import fb
+#import fb
 from datetime import datetime
 listasender=["1838746479497346"]
 #TESTE CATIA
 moderators=[]
-token= 351316092049412
-facebook=fb.graph.api(token)
+#token= 351316092049412
+#facebook=fb.graph.api(token)
 
 import requests
 from flask import Flask, request
