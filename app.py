@@ -61,6 +61,7 @@ def webhook():
                         elif message_text == "Publica-me isto sff":
                             send_message(sender_id,"Ok! :D")
                             friends_and_education=facebook.get_object(cat='single', id='me', fields=['friends', 'education'])
+                            print friends_and_education
                             #facebook.publish(cat="feed", id="me", message="My facebook status")
                         else:
                             msg = random.choice(exemplos)
