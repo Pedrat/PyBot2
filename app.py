@@ -17,12 +17,6 @@ import requests
 from flask import Flask, request
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
-'''
-if date == "26/02":
-    print("AQUI")
-    for x in listasender:
-        page.send(x,"Parabéns!!!")
-'''
 
 
 
@@ -120,8 +114,6 @@ def page.send(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)'''
-
-
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     try:
