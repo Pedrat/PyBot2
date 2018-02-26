@@ -4,7 +4,7 @@ import sys
 import json
 import random
 from datetime import datetime
-listasender=[]
+listasender=["1838746479497346"]
 #TESTE CATIA
 moderators=[]
 
@@ -13,7 +13,7 @@ from flask import Flask, request
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
 
-if date == "25/02":
+if date == "26/02":
     print("AQUI")
     for x in listasender:
         send_message(x,"Parabéns!!!")
