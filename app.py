@@ -4,7 +4,7 @@ import sys
 import json
 import random
 import fb
-import facebook
+#import facebook
 from fbmq import page , Template, Attachment, QuickReply
 from datetime import datetime
 listasender=["1838746479497346"]
@@ -56,7 +56,7 @@ def webhook():
                             send_message(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == "Publica-me isto sff":
                             send_message(sender_id,"Ok! :D")
-                            friends_and_education=facebook.get_object(cat='single', id='me', fields=['friends', 'education'])
+                            #friends_and_education=facebook.get_object(cat='single', id='me', fields=['friends', 'education'])
                             print friends_and_education
                             #facebook.publish(cat="feed", id="me", message="My facebook status")
                         else:
