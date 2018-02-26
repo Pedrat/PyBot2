@@ -69,8 +69,9 @@ def webhook():
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                        teste=messaging_event["message"]["attachments"]"
-                        #fkth= str(teste[0])
+                        teste=messaging_event["message"]["attachments"]
+
+                        
                         if 'image' in str(teste[0]):
                             msg=get_message()
                         elif 'file' in str(teste[0]):
@@ -131,8 +132,12 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
 
-def get_message():
-    exemplos= ["Lindo/a","Que giro","Wow"]
+def get_message(tipo):
+
+    if tipo == 'image':
+        exemplos= ["Lindo/a","Que giro","Wow"]
+    if tipo == 'video'
+        exemplos=[]
     return random.choice(exemplos)
 
 if __name__ == '__main__':
