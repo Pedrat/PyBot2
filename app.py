@@ -66,24 +66,14 @@ def webhook():
                         else:
                             msg = random.choice(exemplos)
                             send_message(sender_id, msg)
-
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                        #print messaging_event, "TESTE TESTE TESTE"
-##                        typeatt= messaging_event["attachments"]["type"]
-##                        print typeatt
-##                            #message_text = messaging_event["message"]["text"]  # the message's text
-                        #typeatt= messaging_event["type"]
-                        #print typeatt
-                        teste=messaging_event["message"]["attachments"]
-                        #print teste, "FUCK THIS SHIT"
-                        #print teste, "TESTE"
-                        fkth= str(teste[0])
-
-                        if 'image' in fkth:
+                        teste=messaging_event["message"]["attachments"]"
+                        #fkth= str(teste[0])
+                        if 'image' in str(teste[0]):
                             msg=get_message()
-                        elif 'file' in fkth:
+                        elif 'file' in str(teste[0]):
                             msg="Files são dubios"
                         else:
                             msg = "Já o vou ver"
@@ -133,10 +123,10 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         else:
             msg = (msg).format(*args, **kwargs)
         print "{}: {}".format(datetime.now(), msg)
-        print "TESTE DE DEBUGGING:"
-        print date
-        for x in listasender:
-            print x
+        #print "TESTE DE DEBUGGING:"
+        #print date
+        #for x in listasender:
+            #print x
     except UnicodeEncodeError:
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
