@@ -7,18 +7,15 @@ import fb
 #import facebook
 from fbmq import Page , Template, Attachment, QuickReply
 from datetime import datetime
-listasender=["1838746479497346"]
-#TESTE CATIA2
-moderators=[]
-token= 351316092049412
-facebook=fb.graph.api(token)
-
+#listasender=["1838746479497346"]
+page = Page(EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5)
+#moderators=[]
+#token= 351316092049412
+#facebook=fb.graph.api(token)
 import requests
 from flask import Flask, request
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
-
-
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -51,17 +48,17 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         message_text = messaging_event["message"]["text"]  # the message's text
                         if message_text == "Ajuda!":
-                            Page.send(sender_id,"Com o que podemos ajudar?")
+                            page.send(sender_id,"Com o que podemos ajudar?")
                         elif message_text == "Que dia e hoje?":
-                            Page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
+                            page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == "Publica-me isto sff":
-                            Page.send(sender_id,"Ok! :D")
+                            page.send(sender_id,"Ok! :D")
                             #friends_and_education=facebook.get_object(cat='single', id='me', fields=['friends', 'education'])
                             print friends_and_education
                             #facebook.publish(cat="feed", id="me", message="My facebook status")
                         else:
                             msg = random.choice(exemplos)
-                            Page.send(sender_id, msg)
+                            page.send(sender_id, msg)
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
@@ -79,7 +76,7 @@ def webhook():
                         else:
                             msg = "Já o vou ver"
                         #msg = get_message()
-                        Page.send(sender_id,msg)
+                        page.send(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
