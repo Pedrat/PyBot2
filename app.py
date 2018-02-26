@@ -72,9 +72,11 @@ def webhook():
                         #print teste, "FUCK THIS SHIT"
                         #print teste, "TESTE"
                         fkth= str(teste[0])
-                        
+
                         if 'image' in fkth:
                             msg=get_message()
+                        elif 'file' in fkth:
+                            msg="Files são dubios"
                         else:
                             msg = "Já o vou ver"
                         #msg = get_message()
