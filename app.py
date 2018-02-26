@@ -74,18 +74,10 @@ def webhook():
                         fkth= str(teste[0])
                         
                         if 'image' in fkth:
-                            print "MAMBOS TRUE"
+                            msg=get_message()
                         else:
-                            print "FUCK ME"
-                        '''
-                        for x in teste:
-                            print x
-                            if u'image' in x:
-                                print "MAMBOS TRUE"
-                            else:
-                                print "MAMBOS FALSE"
-                       '''
-                        msg = get_message()
+                            msg = "Já o vou ver"
+                        #msg = get_message()
                         send_message(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
