@@ -68,17 +68,21 @@ def webhook():
 ##                            #message_text = messaging_event["message"]["text"]  # the message's text
                         #typeatt= messaging_event["type"]
                         #print typeatt
-                        teste=messaging_event["message"]["attachments"].get("type")
-                        print teste, "FUCK THIS SHIT"
+                        teste=messaging_event["message"]["attachments"]
+                        #print teste, "FUCK THIS SHIT"
                         #print teste, "TESTE"
-                      
+                        if u'image' in teste:
+                            print "MAMBOS TRUE"
+                        else:
+                            print "FUCK ME"
+                          '''
                         for x in teste:
                             print x
                             if u'image' in x:
                                 print "MAMBOS TRUE"
                             else:
                                 print "MAMBOS FALSE"
-                       
+                       '''
                         msg = get_message()
                         send_message(sender_id,msg)
                 if messaging_event.get("delivery"):  # delivery confirmation
