@@ -7,6 +7,7 @@ from datetime import datetime
 listasender=[]
 #TESTE CATIA
 
+
 import requests
 from flask import Flask, request
 date=datetime.now().strftime("%d/%m")
@@ -44,7 +45,7 @@ def webhook():
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
-                exemplos = ["Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não consigo lhe ajudar..."]
+                exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não consigo lhe ajudar..."]
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event['message'].get('text'):
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
