@@ -68,6 +68,7 @@ def webhook():
                         teste=messaging_event['message'].get('attachments')
                         #print teste, "TESTE"
                         for x in teste:
+                            print x
                             if u'image' in x:
                                 print "MAMBOS TRUE"
                             else:
