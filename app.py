@@ -26,12 +26,11 @@ def verify():
 
 
 
+
 @app.route('/', methods=['POST'])
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
-    #client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
-    #client.set_get_started_button_payload("HELP")  # Specify a payload string.
     quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
                     {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
@@ -49,6 +48,10 @@ def webhook():
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID da pagina
                         message_text = messaging_event["message"]["text"]  # the text
+                        page_id = page.page_id
+                        page_name = page.page_name
+                        user_profile = page.get_user_profile(sender_id) # return dict
+                        print(user_profile,'USER PROFILE')
                         page.typing_on(sender_id)
                         if message_text.lower() == "ajuda!":
                             page.send(sender_id,"Com o que podemos ajudar?")
