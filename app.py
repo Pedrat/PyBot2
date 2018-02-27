@@ -21,13 +21,28 @@ def verify():
     return "Hello world", 200
 
 
+
+class button:
+    def test_buttons(self):
+        btns1 = Template.Buttons(text="Title", buttons=[
+            {'type': 'web_url', 'title': 'title', 'value': 'https://test.com'},
+            {'type': 'postback', 'title': 'title', 'value': 'TEST_PAYLOAD'},
+            {'type': 'phone_number', 'title': 'title', 'value': '+82108011'},
+        ])
+
+        btns2 = Template.Buttons(text="Title", buttons=[
+            Template.ButtonWeb(title="title", url="https://test.com"),
+            Template.ButtonPostBack(title="title", payload="TEST_PAYLOAD"),
+            Template.ButtonPhoneNumber(title="title", payload="+82108011")
+        ])
+
+        self.assertEquals(utils.to_json(btns1), utils.to_json(btns2))
+
+
+
+
 @app.route('/', methods=['POST'])
 def webhook():
-    quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
-                    {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
-    buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
-          {'type': 'postback', 'title': 'trigger Postback', 'value': 'DEVELOPED_DEFINED_PAYLOAD'},
-          {'type': 'phone_number', 'title': 'Call Phone Number', 'value': '+16505551234'}]
     # Processa msg
     data = request.get_json()
     log(data)
@@ -51,12 +66,8 @@ def webhook():
 
                         else:
                             msg = random.choice(exemplos)
-                            page.send(sender_id,
-          "What's your favorite movie genre?",
-          quick_replies=quick_replies,
-          metadata="DEVELOPER_DEFINED_METADATA")
                             page.send(sender_id, msg)
-                            page.send(sender_id, Template.Buttons("hello", buttons))
+                            page.send(sender_id, Template.Buttons("hello", button.test_buttons))
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
