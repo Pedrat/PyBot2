@@ -31,8 +31,12 @@ def verify():
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
-    quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
-                    {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
+    quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
+                    {'title': "Rn'B", 'payload': 'PICK_RnB'},
+                    {'title': 'Pop', 'payload': 'PICK_POP'},
+                    {'title': 'Indie', 'payload': 'PICK_INDIE},
+                    {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
+                    {'title': 'Metal', 'payload': 'PICK_METAL'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
           {'type': 'postback', 'title': 'trigger Postback', 'value': 'DEVELOPED_DEFINED_PAYLOAD'},
           {'type': 'phone_number', 'title': 'Call Phone Number', 'value': '+16505551234'}]
@@ -67,9 +71,9 @@ def webhook():
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
                             page.send(sender_id,
-          "What's your favorite movie genre?",
+          "Qual e o teu tipo de musica favorito?",
           quick_replies=quick_replies,
-          metadata="DEVELOPER_DEFINED_METADATA")
+          metadata="Test")
 
                             #page.send(sender_id, Template.Buttons("hello", buttons))
                     if messaging_event['message'].get('attachments'):
