@@ -90,7 +90,7 @@ def webhook():
                     pass
 
     return "ok", 200
-
+#Teste
 @page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
 '''
 @page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
