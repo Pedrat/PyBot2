@@ -30,7 +30,10 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
-    page.show_starting_button({'title': 'Get Started', 'payload': 'START_PAYLOAD'}) #"START_PAYLOAD")
+    page.show_starting_button("START_PAYLOAD")
+    @page.handle_postback(['START_PAYLOAD'])
+    def start_callback(payload, event):
+      print("Let's start!")
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
                     {'title': 'Pop', 'payload': 'PICK_POP'},
@@ -115,9 +118,6 @@ def webhook():
 @page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
 
 
-@page.callback(['START_PAYLOAD'])
-def start_callback(payload, event):
-  print("Let's start!")
 
 
 
