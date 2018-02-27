@@ -5,7 +5,7 @@ from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
 from pymessager.message import Messager
-from fbmessenger.thread_settings import GreetingText, GetStartedButton, MessengerProfile
+#from classes import TemplateTestad
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 client = Messager(token)
@@ -13,6 +13,15 @@ client = Messager(token)
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
 numbergen=[1,2]
+
+
+buttons = [
+  Templates.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
+  Templates.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
+  Templates.ButtonPhoneNumber("Call Phone Number", "+16505551234")
+]
+
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -29,16 +38,8 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    #page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
+    page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     #page.show_starting_button("START_PAYLOAD")
-
-    messenger_profile = MessengerProfile()
-
-    greeting_text = GreetingText('Welcome to weather bot')
-    get_started = GetStartedButton(payload='start')
-
-    messenger_profile = MessengerProfile(greetings=[greeting_text], get_started=get_started)
-    messenger.set_messenger_profile(messenger_profile.to_dict())
 
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
@@ -69,7 +70,8 @@ def webhook():
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == (':D' or ':P' or ':)' or ';)'):
                             msg=get_message('smile')
-                            page.send(sender_id,msg)
+
+                            page.send(sender_id,Template.Buttons(msg,buttons))
                         elif message_text == "":
                             msg=get_message('thumbs')
                             page.send(sender_id, msg)
@@ -117,7 +119,7 @@ def webhook():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    print("POSTBACK")
+
                     pass
 
     return "ok", 200
