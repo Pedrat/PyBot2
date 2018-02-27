@@ -94,16 +94,17 @@ def webhook():
                         sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
+
+                        if('image' and '369239263222822') in str(teste[0]):
+                            msg=get_att('thumbs')
+                            page.send(sender_id, msg)
                         if 'image' in str(teste[0]):
                             if random.choice(numbergen) == 1:
                                 msg=get_message('image')
                                 page.send(sender_id,msg)
                             else:
                                 image_url=get_att('image')
-                                page.send(sender_id,Attachment.Image(image_url))
-                        elif('image' and '369239263222822') in str(teste[0]):
-                            msg=get_att('thumbs')
-                            page.send(sender_id, msg)
+                                page.send(sender_id,Attachment.Image(image_url))                      
                             #page.send(sender_id,Attachment.Image(image_url))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
