@@ -16,7 +16,7 @@ numbergen=[1,2]
 
 @app.route('/', methods=['GET'])
 def verify():
-    # Vai ao endpoint e verifica os tokens, para o webhook
+    # Vai ao endpoint e verifica os tokens, para o webhooksad
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
         if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
             return "Verification token mismatch", 403
@@ -84,7 +84,7 @@ def webhook():
                         if 'image' in str(teste[0]):
                             if random.choice(numbergen) == 1:
                                 msg=get_message('image')
-                                page.send(sender_id,msg) 
+                                page.send(sender_id,msg)
                             else:
                                 image_url=get_att('image')
                                 page.send(sender_id,Attachment.Image(image_url))
