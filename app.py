@@ -56,6 +56,8 @@ def webhook():
                         elif message_text == (':D' or ':P' or ':)' or ';)'):
                             msg=get_message('smile')
                             page.send(sender_id,msg)
+                        elif message_text == "369239263222822":
+                            page.send(sender_id,"(Y)")
 
                         else:
                             msg = random.choice(exemplos)
