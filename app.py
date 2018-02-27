@@ -109,6 +109,7 @@ def webhook():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+                    print("POSTBACK")
                     pass
 
     return "ok", 200
