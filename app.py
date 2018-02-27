@@ -126,7 +126,7 @@ def webhook():
                     pass
 
     return "ok", 200
-#Teste
+#Teste2
 
 @page.callback(['PICK_(.+)'])
 def callback_picked_genre(payload, event):
