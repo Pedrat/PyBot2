@@ -5,7 +5,7 @@ from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
 from pymessager.message import Messager
-#from classes import TemplateTestad
+from fbmessenger.thread_settings import GreetingText, GetStartedButton, MessengerProfile
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 client = Messager(token)
@@ -29,8 +29,16 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
+    #page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     #page.show_starting_button("START_PAYLOAD")
+
+    messenger_profile = MessengerProfile()
+
+    greeting_text = GreetingText('Welcome to weather bot')
+    get_started = GetStartedButton(payload='start')
+
+    messenger_profile = MessengerProfile(greetings=[greeting_text], get_started=get_started)
+    messenger.set_messenger_profile(messenger_profile.to_dict())
 
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},

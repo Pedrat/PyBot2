@@ -7,3 +7,4 @@ gunicorn
 requests==2.18.4
 fbmq
 pymessager
+fbmessenger
