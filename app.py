@@ -34,7 +34,7 @@ def webhook():
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
                     {'title': 'Pop', 'payload': 'PICK_POP'},
-                    {'title': 'Indie', 'payload': 'PICK_INDIE},
+                    {'title': 'Indie', 'payload': 'PICK_INDIE'},
                     {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
                     {'title': 'Metal', 'payload': 'PICK_METAL'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
