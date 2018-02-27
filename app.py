@@ -21,6 +21,18 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
+
+    buttons = [
+  Templates.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
+  Templates.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
+  Templates.ButtonPhoneNumber("Call Phone Number", "+16505551234")
+]
+
+
+
+
+
+
     # Processa msg
     data = request.get_json()
     log(data)
@@ -41,6 +53,8 @@ def webhook():
                         elif message_text == ':D' or ':P' or ':)' or ';)':
                             msg=get_message('smile')
                             page.send(sender_id,msg)
+                        elif message_text == "butoes":
+                            page.send(sender_id, Template.Buttons("hello", buttons))
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
