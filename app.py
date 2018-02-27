@@ -33,12 +33,13 @@ def webhook():
                         sender_id = messaging_event["sender"]["id"]        # the facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID da pagina
                         message_text = messaging_event["message"]["text"]  # the text
+                        page.typing_on(sender_id)
                         if message_text == "Ajuda!":
                             page.send(sender_id,"Com o que podemos ajudar?")
                         elif message_text == "Que dia e hoje?":
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == "Publica-me isto sff":
-                            page.typing_on(sender_id)
+
                             page.send(sender_id,"Ok! :D")
                             #print friends_and_education
                         else:
@@ -127,7 +128,7 @@ def get_message(tipo): #Random msg
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
     if tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
-    return random.choice(exemplos)
+    return random.choice(exemplos+' -bot')
 
 if __name__ == '__main__':
     app.run(debug=True)
