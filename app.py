@@ -52,7 +52,7 @@ def webhook():
                                 msg=get_message('image')
                                 page.send(sender_id,msg)
                             else:
-                                image_url=get_att('image')
+                                #image_url=get_att('image')
                                 page.send(sender_id,Attachment.Image("https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543"))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
