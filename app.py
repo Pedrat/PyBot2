@@ -38,6 +38,9 @@ def webhook():
                             page.send(sender_id,"Com o que podemos ajudar?")
                         elif message_text.lower() == ("que dia é hoje?" or "que dia e hoje?"):
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
+                        elif message_text == ':D' or ':P' or ':)' or ';)':
+                            msg=get_message('smile')
+                            page.send(sender_id,msg)
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
@@ -61,9 +64,7 @@ def webhook():
                         elif 'audio' in str(teste[0]):
                             msg=get_message('audio')
                             page.send(sender_id,msg)
-                        elif ':D' or ':P' or ':)' or ';)' in str(teste[0]):
-                            msg=get_message('smile')
-                            page.sned(sender_id,msg)
+
                         else:
                             msg = "Já o vou ver"
                             page.send(sender_id,msg)
@@ -102,8 +103,8 @@ def get_message(tipo): #Random msg
     elif tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
     if tipo == 'smile':
-        exemplos=[":D",":)",";)",":P"]
-    return random.choice(exemplos+' -bot')
+        exemplos=[":D",":)",";)",":P",":3"]
+    return random.choice(exemplos+' -signed bot')
 
 if __name__ == '__main__':
     app.run(debug=True)
