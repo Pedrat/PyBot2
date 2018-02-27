@@ -40,7 +40,7 @@ def webhook():
                         elif message_text == "Publica-me isto sff":
                             page.typing_on(recipient_id)
                             page.send(sender_id,"Ok! :D")
-                            print friends_and_education
+                            #print friends_and_education
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
