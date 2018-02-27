@@ -129,7 +129,9 @@ def webhook():
 def callback_picked_genre(payload, event):
   print(payload, event,"Sucesso!")
 
-
+@page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
+def callback_clicked_button(payload, event):
+  print(payload, event)
 
 @page.callback(['START_PAYLOAD'])
 def start_callback(payload, event):
