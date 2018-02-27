@@ -90,7 +90,7 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
                         if 'image' in str(teste[0]):
-                            if "369239263222822" in message_text:
+                            if "369239263222822" in str(teste[0]):
                                 msg=get_message('thumbs')
                                 page.send(sender_id, msg)
                             if random.choice(numbergen) == 1:
@@ -99,9 +99,6 @@ def webhook():
                             else:
                                 image_url=get_att('image')
                                 page.send(sender_id,Attachment.Image(image_url))
-                        elif('image' and '369239263222822') in str(teste[0]):
-                            msg=get_att('smile')
-                            page.send(sender_id,Attachment.Image(image_url))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
                             page.send(sender_id,msg)
