@@ -114,23 +114,15 @@ def webhook():
     return "ok", 200
 #Teste
 
-@page.callback(['PICK_ROCK', 'PICK_POP'])
+@page.callback(['PICK_(.+)'])
 def callback_picked_genre(payload, event):
   print(payload, event,"Sucesso!")
 
 
-@page.handle_postback
-def received_postback(event):
-    sender_id = event.sender_id
-    recipient_id = event.recipient_id
-    #time_of_postback = event.timestamp
 
-    payload = event.postback_payload
-
-    print("Received postback for user %s and page %s with payload '%s' at %s"
-          % (sender_id, recipient_id, payload, time_of_postback))
-
-    page.send(sender_id, "Postback called")
+@page.callback(['START_PAYLOAD'])
+def start_callback(payload, event):
+  print("Let's start!")
 
 
 
@@ -164,6 +156,10 @@ def get_message(tipo): #Random msg
     if tipo == 'smile':
         exemplos=[":D",":)",";)",":P",":3"]
     return (random.choice(exemplos)+' -signed bot')
+
+def callback(payload, response):
+  print('response : ' + response.text)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
