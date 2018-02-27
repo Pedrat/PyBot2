@@ -171,7 +171,7 @@ def get_message(tipo): #Random msg
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
     elif tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
-    if tipo == 'smile':
+    elif tipo == 'smile':
         exemplos=[":D",":)",";)",":P",":3"]
     return (random.choice(exemplos)+' -signed bot')
 
