@@ -1,12 +1,12 @@
 # coding=utf-8
-import os,sys,json,random,fb
+import os,sys,json,random,fb,requests
 from fbmq import Page , Template, Attachment, QuickReply
 from datetime import datetime
-import requests
 from flask import Flask, request
 page = Page("EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5")
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
+numbergen=[1,2]
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -21,12 +21,9 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-
     # Processa msg
-
     data = request.get_json()
     log(data)
-
     if data["object"] == "page":
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
@@ -51,16 +48,25 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
                         if 'image' in str(teste[0]):
-                            msg=get_message('image')
+                            if random.choice(numbergen) == 1:
+                                msg=get_message('image')
+                                page.send(sender_id,msg)
+                            else:
+                                image_url=get_att('image')
+                                page.send(sender_id,Attachment.Image(image_url))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
+                            page.send(sender_id,msg)
                         elif 'video' in str(teste[0]):
                             msg=get_message('video')
+                            page.send(sender_id,msg)
                         elif 'audio' in str(teste[0]):
                             msg=get_message('audio')
+                            page.send(sender_id,msg)
                         else:
                             msg = "Já o vou ver"
-                        page.send(sender_id,msg)
+                            page.send(sender_id,msg)
+                            #page.send(sender_id,Attachment.Image(image_url))
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
@@ -104,10 +110,13 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         else:
             msg = (msg).format(*args, **kwargs)
         print "{}: {}".format(datetime.now(), msg)
-    except UnicodeEncodeError:
+    except:
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
 
+def get_att(tipo):
+    if tipo == 'image':
+        exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543"]
 def get_message(tipo): #Random msg
     if tipo == 'image':
         exemplos= ["Lindo/a","Que giro","Wow"]
