@@ -8,7 +8,7 @@ from pymessager.message import Messager
 #from classes import TemplateTest
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
-client = Messager(config.token)
+client = Messager(token)
 
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
