@@ -28,9 +28,10 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    page.greeting("Welcome!")
-    client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
-    client.set_get_started_button_payload("HELP")  # Specify a payload string.
+    page.greeting("Bem vindo! A nossa loja")
+    page.show_starting_button("START_PAYLOAD")
+    #client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
+    #client.set_get_started_button_payload("HELP")  # Specify a payload string.
     quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
                     {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
@@ -105,6 +106,10 @@ def webhook():
 #Teste
 @page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
 
+
+@page.callback(['START_PAYLOAD'])
+def start_callback(payload, event):
+  print("Let's start!")
 
 
 
