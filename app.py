@@ -75,12 +75,7 @@ def webhook():
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == (':D' or ':P' or ':)' or ';)'):
                             msg=get_message('smile')
-
                             page.send(sender_id,Template.Buttons(msg,buttons))
-                        elif message_text == "":
-                            msg=get_message('thumbs')
-                            page.send(sender_id, msg)
-
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
@@ -95,6 +90,9 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
                         if 'image' in str(teste[0]):
+                            if "369239263222822" in message_text:
+                                msg=get_message('thumbs')
+                                page.send(sender_id, msg)
                             if random.choice(numbergen) == 1:
                                 msg=get_message('image')
                                 page.send(sender_id,msg)
