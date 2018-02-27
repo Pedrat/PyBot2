@@ -30,7 +30,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
-    page.show_starting_button("START_PAYLOAD")
+    #page.show_starting_button("START_PAYLOAD")
 
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
@@ -119,9 +119,18 @@ def callback_picked_genre(payload, event):
   print(payload, event,"Sucesso!")
 
 
-@page.callback(['START_PAYLOAD'])
-def start_callback(payload, event):
-  print("Let's start!")
+@page.handle_postback
+def received_postback(event):
+    sender_id = event.sender_id
+    recipient_id = event.recipient_id
+    #time_of_postback = event.timestamp
+
+    payload = event.postback_payload
+
+    print("Received postback for user %s and page %s with payload '%s' at %s"
+          % (sender_id, recipient_id, payload, time_of_postback))
+
+    page.send(sender_id, "Postback called")
 
 
 
