@@ -4,6 +4,7 @@ from fbmq import Page, Attachment, QuickReply, utils
 from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
+#from classes import TemplateTest
 page = Page("EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5")
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
@@ -50,7 +51,7 @@ def webhook():
 
                         else:
                             msg = random.choice(exemplos)
-                            page.send(recipient_id,
+                            page.send(sender_id,
           "What's your favorite movie genre?",
           quick_replies=quick_replies,
           metadata="DEVELOPER_DEFINED_METADATA")
