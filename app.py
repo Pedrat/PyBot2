@@ -10,7 +10,7 @@ numbergen=[1,2]
 
 @app.route('/', methods=['GET'])
 def verify():
-    # Vai ao endpoint e verifica os tokens, para o webhook 
+    # Vai ao endpoint e verifica os tokens, para o webhook
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
         if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
             return "Verification token mismatch", 403
@@ -27,12 +27,6 @@ def webhook():
   Template.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
   Template.ButtonPhoneNumber("Call Phone Number", "+16505551234")
 ]
-
-
-
-
-
-
     # Processa msg
     data = request.get_json()
     log(data)
@@ -53,11 +47,11 @@ def webhook():
                         elif message_text == ':D' or ':P' or ':)' or ';)':
                             msg=get_message('smile')
                             page.send(sender_id,msg)
-                        elif message_text == "butoes":
-                            page.send(sender_id, Template.Buttons("hello", buttons))
+
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
+                            page.send(sender_id, Template.Buttons("hello", buttons))
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
