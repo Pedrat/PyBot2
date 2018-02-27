@@ -31,9 +31,7 @@ def verify():
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
-    @page.handle_postback(['START_PAYLOAD'])
-    def start_callback(payload, event):
-      print("Let's start!")
+
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
                     {'title': 'Pop', 'payload': 'PICK_POP'},
@@ -115,8 +113,14 @@ def webhook():
 
     return "ok", 200
 #Teste
-@page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
+@page.callback(['PICK_ROCK', 'PICK_POP'])
+def callback_picked_genre(payload, event):
+  print(payload, event,"Sucesso!")
 
+
+@page.callback(['START_PAYLOAD'])
+def start_callback(payload, event):
+  print("Let's start!")
 
 
 
