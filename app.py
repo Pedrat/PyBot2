@@ -38,7 +38,7 @@ def webhook():
                         elif message_text == "Que dia e hoje?":
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == "Publica-me isto sff":
-                            page.typing_on(recipient_id)
+                            page.typing_on(sender_id)
                             page.send(sender_id,"Ok! :D")
                             #print friends_and_education
                         else:
