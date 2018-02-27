@@ -103,7 +103,8 @@ def webhook():
                                 page.send(sender_id,Attachment.Image(image_url))
                         elif('image' and '369239263222822') in str(teste[0]):
                             msg=get_att('thumbs')
-                            page.send(sender_id,Attachment.Image(image_url))
+                            page.send(sender_id, msg)
+                            #page.send(sender_id,Attachment.Image(image_url))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
                             page.send(sender_id,msg)
@@ -163,18 +164,20 @@ def get_att(tipo):
     if tipo == 'image':
         exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543","https://vignette.wikia.nocookie.net/harrypotter/images/2/27/Happy-guy-thumbs-up-300x237.gif/revision/latest?cb=20121019041406"]
 
-    if tipo == 'smile':
-        exemplos =["http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
+    #if tipo == 'thumbs':
+        #exemplos =["http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
     return random.choice(exemplos)
 
 def get_message(tipo): #Random msg
+    if tipo == 'thumbs':
+        exemplos = ["(y)"] 
     if tipo == 'image':
         exemplos= ["Lindo/a","Que giro","Wow"]
     elif tipo == 'video':
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
     elif tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
-    if tipo == 'smile':
+    elif tipo == 'smile':
         exemplos=[":D",":)",";)",":P",":3"]
     return (random.choice(exemplos)+' -signed bot')
 
