@@ -30,7 +30,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
-    page.show_starting_button("PICK_START")
+    page.show_starting_button({'title': 'Get Started', 'payload': 'START_PAYLOAD'}) #"START_PAYLOAD")
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
                     {'title': 'Pop', 'payload': 'PICK_POP'},
