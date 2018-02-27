@@ -4,8 +4,12 @@ from fbmq import Page, Attachment, QuickReply, utils
 from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
+from pymessager.message import Messager
 #from classes import TemplateTest
-page = Page("EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5")
+token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
+page = Page(token)
+client = Messager(token)
+
 date=datetime.now().strftime("%d/%m")
 app = Flask(__name__)
 numbergen=[1,2]
@@ -24,7 +28,10 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    page.greeting("Welcome!")
+    page.greeting("Bem vindo! A nossa loja")
+    page.show_starting_button("START_PAYLOAD")
+    client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
+    client.set_get_started_button_payload("HELP")  # Specify a payload string.
     quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
                     {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
@@ -103,6 +110,10 @@ def webhook():
 #Teste
 @page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
 
+
+@page.callback(['START_PAYLOAD'])
+def start_callback(payload, event):
+  print("Let's start!")
 
 
 
