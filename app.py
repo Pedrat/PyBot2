@@ -92,15 +92,9 @@ def webhook():
     return "ok", 200
 #Teste
 @page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
-'''
-@page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
-def callback_clicked_button(payload, event):
-  print(payload, event)
 
-@page.callback(['PICK_ACTION', 'PICK_COMEDY'])
-def callback_picked_genre(payload, event):
-  print(payload, event)
-'''
+
+
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     try:
