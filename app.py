@@ -40,6 +40,9 @@ def verify():
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
+    page.show_persistent_menu([Template.ButtonPostBack('MENU1', 'MENU_PAYLOAD/1'),
+                           Template.ButtonPostBack('MENU2', 'MENU_PAYLOAD/2')])
+
 
     quick_replies = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                     {'title': "Rn'B", 'payload': 'PICK_RnB'},
@@ -137,7 +140,10 @@ def callback_clicked_button(payload, event):
 def start_callback(payload, event):
   print("Let's start!")
 
-
+@page.callback(['MENU_PAYLOAD/(.+)'])
+def click_persistent_menu(payload, event):
+  click_menu = payload.split('/')[1]
+  print("you clicked %s menu" % click_menu)
 
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
