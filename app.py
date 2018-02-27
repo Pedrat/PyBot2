@@ -24,6 +24,7 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
+    page.greeting("Welcome!")
     quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
                     {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
