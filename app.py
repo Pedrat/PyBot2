@@ -104,7 +104,7 @@ def get_message(tipo): #Random msg
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
     if tipo == 'smile':
         exemplos=[":D",":)",";)",":P",":3"]
-    return random.choice(exemplos+' -signed bot')
+    return (random.choice(exemplos)+' -signed bot')
 
 if __name__ == '__main__':
     app.run(debug=True)
