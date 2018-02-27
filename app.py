@@ -1,5 +1,5 @@
 # coding=utf-8
-import os,sys,json,random,fb,requests
+import os,sys,json,random,requests
 from fbmq import Page , Template, Attachment, QuickReply
 from datetime import datetime
 from flask import Flask, request
