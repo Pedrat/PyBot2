@@ -22,7 +22,8 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-
+    quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
+                    {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
           {'type': 'postback', 'title': 'trigger Postback', 'value': 'DEVELOPED_DEFINED_PAYLOAD'},
           {'type': 'phone_number', 'title': 'Call Phone Number', 'value': '+16505551234'}]
@@ -49,6 +50,10 @@ def webhook():
 
                         else:
                             msg = random.choice(exemplos)
+                            page.send(recipient_id,
+          "What's your favorite movie genre?",
+          quick_replies=quick_replies,
+          metadata="DEVELOPER_DEFINED_METADATA")
                             page.send(sender_id, msg)
                             page.send(sender_id, Template.Buttons("hello", buttons))
                     if messaging_event['message'].get('attachments'):
@@ -85,13 +90,17 @@ def webhook():
                     pass
 
     return "ok", 200
+
+@page.callback(['PICK_ACTION', 'PICK_COMEDY'], types=['QUICK_REPLY'])
 '''
 @page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
 def callback_clicked_button(payload, event):
   print(payload, event)
+
+@page.callback(['PICK_ACTION', 'PICK_COMEDY'])
+def callback_picked_genre(payload, event):
+  print(payload, event)
 '''
-
-
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     try:
