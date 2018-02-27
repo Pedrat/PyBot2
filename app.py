@@ -75,7 +75,9 @@ def webhook():
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
                         elif message_text == (':D' or ':P' or ':)' or ';)'):
                             msg=get_message('smile')
+
                             page.send(sender_id,Template.Buttons(msg,buttons))
+
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
@@ -90,15 +92,17 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
                         if 'image' in str(teste[0]):
-                            if "369239263222822" in str(teste[0]):
+                            if '369239263222822' in str(teste[0])
                                 msg=get_message('thumbs')
-                                page.send(sender_id, msg)
                             if random.choice(numbergen) == 1:
                                 msg=get_message('image')
                                 page.send(sender_id,msg)
                             else:
                                 image_url=get_att('image')
                                 page.send(sender_id,Attachment.Image(image_url))
+                        elif('image' and '369239263222822') in str(teste[0]):
+                            msg=get_att('thumbs')
+                            page.send(sender_id,Attachment.Image(image_url))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
                             page.send(sender_id,msg)
@@ -160,8 +164,6 @@ def get_att(tipo):
 
     if tipo == 'thumbs':
         exemplos =["http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
-
-
     return random.choice(exemplos)
 
 def get_message(tipo): #Random msg
@@ -171,7 +173,7 @@ def get_message(tipo): #Random msg
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
     elif tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
-    elif tipo == 'smile':
+    if tipo == 'smile':
         exemplos=[":D",":)",";)",":P",":3"]
     return (random.choice(exemplos)+' -signed bot')
 
