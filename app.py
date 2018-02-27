@@ -119,7 +119,7 @@ def callback_picked_genre(payload, event):
   print(payload, event,"Sucesso!")
 
 
-@page.handle_postback(['START_PAYLOAD'])
+@page.callback(['START_PAYLOAD'])
 def start_callback(payload, event):
   print("Let's start!")
 
