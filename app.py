@@ -10,7 +10,7 @@ numbergen=[1,2]
 
 @app.route('/', methods=['GET'])
 def verify():
-    # Vai ao endpoint e verifica os tokens, para o webhook
+    # Vai ao endpoint e verifica os tokens, para o webhook 
     if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
         if not request.args.get("hub.verify_token") == os.environ["VERIFY_TOKEN"]:
             return "Verification token mismatch", 403
