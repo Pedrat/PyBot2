@@ -1,6 +1,7 @@
 # coding=utf-8
 import os,sys,json,random,requests
-from fbmq import Page , Template, Attachment, QuickReply
+from fbmq import Page, Attachment, QuickReply, utils
+from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
 page = Page("EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5")
@@ -22,11 +23,9 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
 
-    buttons = [
-  Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
-  Template.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
-  Template.ButtonPhoneNumber("Call Phone Number", "+16505551234")
-]
+    buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
+          {'type': 'postback', 'title': 'trigger Postback', 'value': 'DEVELOPED_DEFINED_PAYLOAD'},
+          {'type': 'phone_number', 'title': 'Call Phone Number', 'value': '+16505551234'}]
     # Processa msg
     data = request.get_json()
     log(data)
@@ -86,6 +85,13 @@ def webhook():
                     pass
 
     return "ok", 200
+'''
+@page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
+def callback_clicked_button(payload, event):
+  print(payload, event)
+'''
+
+
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     try:
