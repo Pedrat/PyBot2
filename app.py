@@ -28,7 +28,7 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    page.greeting("Bem vindo! A nossa loja")
+    page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
     #client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
     #client.set_get_started_button_payload("HELP")  # Specify a payload string.
