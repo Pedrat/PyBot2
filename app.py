@@ -61,6 +61,9 @@ def webhook():
                         elif 'audio' in str(teste[0]):
                             msg=get_message('audio')
                             page.send(sender_id,msg)
+                        elif ':D' or ':P' or ':)' or ';)' in str(teste[0]):
+                            msg=get_message('smile')
+                            page.sned(sender_id,msg)
                         else:
                             msg = "Já o vou ver"
                             page.send(sender_id,msg)
@@ -98,6 +101,8 @@ def get_message(tipo): #Random msg
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
     elif tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
+    if tipo == 'smile':
+        exemplos=[":D",":)",";)",":P"]
     return random.choice(exemplos+' -bot')
 
 if __name__ == '__main__':
