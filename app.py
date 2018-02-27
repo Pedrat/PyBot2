@@ -44,8 +44,8 @@ def webhook():
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
                     if messaging_event['message'].get('attachments'):
-                        sender_id = messaging_event["sender"]["id"]        # the facebook ID da pessoa
-                        recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID da pagina
+                        sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
+                        recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
                         if 'image' in str(teste[0]):
                             if random.choice(numbergen) == 1:
@@ -53,7 +53,7 @@ def webhook():
                                 page.send(sender_id,msg)
                             else:
                                 image_url=get_att('image')
-                                page.send(sender_id,Attachment.Image(image_url))
+                                page.send(sender_id,Attachment.Image("https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543"))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
                             page.send(sender_id,msg)
@@ -113,10 +113,11 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     except:
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
-
+'''
 def get_att(tipo):
     if tipo == 'image':
         exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543"]
+'''
 def get_message(tipo): #Random msg
     if tipo == 'image':
         exemplos= ["Lindo/a","Que giro","Wow"]
