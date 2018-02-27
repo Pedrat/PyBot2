@@ -39,7 +39,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
-    page.show_starting_button(Template.ButtonPostBack(title="title", payload="TEST_PAYLOAD"))
+    page.show_starting_button("START_PAYLOAD")
     page.show_persistent_menu([Template.ButtonPostBack('MENU1', 'MENU_PAYLOAD/1'),
                            Template.ButtonPostBack('MENU2', 'MENU_PAYLOAD/2')])
 
@@ -137,8 +137,8 @@ def callback_clicked_button(payload, event):
   print(payload, event)
 
 @page.callback(['START_PAYLOAD'])
-def start_callback(payload, event):
-  print("Let's start!")
+def start_callback(payload="START_PAYLOAD"):
+  print("Let's start!!!!!!!!!1")
 
 @page.callback(['MENU_PAYLOAD/(.+)'])
 def click_persistent_menu(payload, event):
