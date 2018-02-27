@@ -52,12 +52,13 @@ def webhook():
 
                         else:
                             msg = random.choice(exemplos)
+                            page.send(sender_id, msg)
                             page.send(sender_id,
           "What's your favorite movie genre?",
           quick_replies=quick_replies,
           metadata="DEVELOPER_DEFINED_METADATA")
-                            page.send(sender_id, msg)
-                            page.send(sender_id, Template.Buttons("hello", buttons))
+
+                            #page.send(sender_id, Template.Buttons("hello", buttons))
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
