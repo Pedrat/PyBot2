@@ -34,14 +34,10 @@ def webhook():
                         recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID da pagina
                         message_text = messaging_event["message"]["text"]  # the text
                         page.typing_on(sender_id)
-                        if message_text == "Ajuda!":
+                        if message_text.lower() == "ajuda!":
                             page.send(sender_id,"Com o que podemos ajudar?")
-                        elif message_text == "Que dia e hoje?":
+                        elif message_text.lower() == ("que dia é hoje?" or "que dia e hoje?"):
                             page.send(sender_id,("{}".format(datetime.now().strftime("%d/%m/%Y"))))
-                        elif message_text == "Publica-me isto sff":
-
-                            page.send(sender_id,"Ok! :D")
-                            #print friends_and_education
                         else:
                             msg = random.choice(exemplos)
                             page.send(sender_id, msg)
@@ -68,7 +64,6 @@ def webhook():
                         else:
                             msg = "Já o vou ver"
                             page.send(sender_id,msg)
-                            #page.send(sender_id,Attachment.Image(image_url))
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
@@ -79,31 +74,6 @@ def webhook():
                     pass
 
     return "ok", 200
-
-'''
-def send_message(recipient_id, message_text):
-
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
-
-    params = {
-        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-        "message": {
-            "text": message_text+' -bot'
-        }
-    })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
-'''
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     try:
@@ -124,9 +94,9 @@ def get_att(tipo):
 def get_message(tipo): #Random msg
     if tipo == 'image':
         exemplos= ["Lindo/a","Que giro","Wow"]
-    if tipo == 'video':
+    elif tipo == 'video':
         exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
-    if tipo == 'audio':
+    elif tipo == 'audio':
         exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
     return random.choice(exemplos+' -bot')
 
