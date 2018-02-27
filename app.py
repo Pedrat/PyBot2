@@ -5,7 +5,7 @@ from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
 from pymessager.message import Messager
-#from classes import TemplateTest
+#from classes import TemplateTestad
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 client = Messager(token)
@@ -28,10 +28,10 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    page.greeting("Bem vindo! A nossa loja")
+    page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
-    client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
-    client.set_get_started_button_payload("HELP")  # Specify a payload string.
+    #client.set_greeting_text("Hi, this is Engine Bai. Nice to meet you!")
+    #client.set_get_started_button_payload("HELP")  # Specify a payload string.
     quick_replies = [{'title': 'Action', 'payload': 'PICK_ACTION'},
                     {'title': 'Comedy', 'payload': 'PICK_COMEDY'}]
     buttons = [{'type': 'web_url', 'title': 'Open Web URL', 'value': 'https://www.oculus.com/en-us/rift/'},
