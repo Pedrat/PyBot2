@@ -50,7 +50,7 @@ def webhook():
                         message_text = messaging_event["message"]["text"]  # the text
                         page_id = page.page_id
                         page_name = page.page_name
-                        user_profile = page.get_user_profile(event.sender_id) # return dict
+                        user_profile = page.get_user_profile(sender_id) # return dict
                         print(user_profile,'USER PROFILE')
                         page.typing_on(sender_id)
                         if message_text.lower() == "ajuda!":
