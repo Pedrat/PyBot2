@@ -113,7 +113,7 @@ def webhook():
 
     return "ok", 200
 #Teste
-@page.callback(['PICK_ROCK', 'PICK_POP'])
+@page.handle_message(['PICK_ROCK', 'PICK_POP'])
 def callback_picked_genre(payload, event):
   print(payload, event,"Sucesso!")
 
