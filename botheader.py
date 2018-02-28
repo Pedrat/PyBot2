@@ -61,7 +61,8 @@ def message_handler(event):
             if '369239263222822' in str(message.get("attachments")):
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
-            page.send(sender_id,"Imagem")
+            else:
+                page.send(sender_id,"Imagem")
         elif 'video' in str(message.get("attachments")):
             page.send(sender_id,'VIDEO')
         elif 'audio' in str(message.get("attachments")):
