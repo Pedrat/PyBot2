@@ -107,7 +107,7 @@ def message_handler(event):
         else:
             page.send(sender_id, Handle.get_message('text'))
 
-'''
+
 @page.handle_postback
 def received_postback(event):
     sender_id = event.sender_id
@@ -122,11 +122,13 @@ def received_postback(event):
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+    elif payload == "MENU_PAYLOAD":
+        page.send(sender_id,"BLABKAHLS")
     else:
         print("AQUI4")
         page.send(sender_id,"Feito")
-'''
 
+'''
 @page.handle_postback
 def received_postback(event):
     sender_id = event.sender_id
@@ -139,8 +141,10 @@ def received_postback(event):
           % (sender_id, recipient_id, payload, time_of_postback))
 
     page.send(sender_id, "Postback called")
-
-
+'''
+@page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
+def callback_clicked_button(payload, event):
+    print(payload, event)
 
 @page.handle_delivery
 def received_delivery_confirmation(event):
