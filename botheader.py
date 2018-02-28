@@ -65,7 +65,7 @@ def message_handler(event):
                 page.send(sender_id,Attachment.Image(image_url))
             else:
                 if Handle.get_num() == 1:
-                    msg=Handle.get_att('image')
+                    msg=Handle.get_message('image')
                     page.send(sender_id,msg)
                 else:
                     image_url=Handle.get_att('image')
