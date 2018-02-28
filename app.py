@@ -26,6 +26,7 @@ def webhook():
     #data = request.get_json()
     #log(data)
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
+
     payload = request.get_data(as_text=True)
     print(payload)
     # Processa msg
@@ -33,12 +34,12 @@ def webhook():
     return "ok", 200
 def message_handler(event):
     sender_id = event.sender_id
-    if event.is_image:
+    page.typing_on(sender_id)
+    if event.is_*:
         page.send(sender_id,"Imagem")
     else:
         message = event.message_text
         page.send(sender_id, "Thank you!")
-
 
 
 
