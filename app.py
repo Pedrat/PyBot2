@@ -8,7 +8,7 @@ from pymessager.message import Messager
 from botheader import buttons, Handle, quickReply
 import botheader
 #token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
-#page = Page(token)
+page = botheader.page
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
