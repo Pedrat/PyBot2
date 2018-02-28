@@ -28,6 +28,10 @@ class quickReply:
                         {'title': 'Indie', 'payload': 'PICK_INDIE'},
                         {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
                         {'title': 'Metal', 'payload': 'PICK_METAL'}]
+        def get_music(genre):
+            if genre == "PICK_ROCK":
+                playlist = ["https://youtu.be/fJ9rUzIMcZQ"]
+            return random.choice(playlist)
 
 class Handle:
     def get_num():
@@ -84,9 +88,11 @@ def message_handler(event):
         else:
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
-        print("TESTEEE",message.get("quick_reply"),"TESTEEE")
-        print("$$$$$$debug&&",(message.get("quick_reply")).get('payload'))
-        page.send(sender_id, "QuickReply")
+        #print("TESTEEE",message.get("quick_reply"),"TESTEEE")
+        #print("$$$$$$debug&&",(message.get("quick_reply")).get('payload'))
+        #page.send(sender_id, "QuickReply")
+        video_url=quickReply.get_music(message.get("quick_reply")).get('payload'))
+        page.send(sender_id,Attachment.Video(video_url))
     elif message.get("text"):
         message = event.message_text
         print(message)
