@@ -110,7 +110,7 @@ def message_handler(event):
             page.send(sender_id,"Saudações")
         elif message.lower() == ('qual o segredo da vida?' or 'qual o proposito de viver' or 'existe um suprasumo da sapiencia?'):
             page.send(sender_id, "a resposta é sempre DARIO")
-        elif message.lower() == ('como te chamas?' or 'quem és tu?' or 'quem és tú?' or 'qual o teu nome?'):
+        elif message.lower() == (('como te chamas?') or ('quem és tu?') or ('quem és tú?') or ('qual o teu nome?')):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message.lower() == ('gostas de pigoitinhas?'): 
             page.send(sender_id, "eu sim, o marco só deles duros")
