@@ -113,19 +113,19 @@ def received_postback(event):
     sender_id = event.sender_id
     recipient_id = event.recipient_id
     time_of_postback = event.timestamp
-    print("AQUI")
+    #print("AQUI")
     payload = event.postback_payload
-    print("AQUI2")
+    #print("AQUI2")
     print("Received postback for user %s and page %s with payload '%s' at %s"
           % (sender_id, recipient_id, payload, time_of_postback))
     if payload == "START_PAYLOAD":
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
-    #elif payload == "MENU_PAYLOAD":
-        #page.send(sender_id,"BLABKAHLS")
+    elif payload == "AJUDA_PAYLOAD":
+        page.send(sender_id,"Eu posso fazer muitas coisas!! Mas não sou o mais esperto, mas tenho, por exemplo, isto:\n",quick_replies=quickReply.quick_musica,metadata="TESTE")
     else:
-        print("AQUI4")
+        #print("AQUI4")
         page.send(sender_id,"Feito")
 
 '''
