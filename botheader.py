@@ -41,5 +41,5 @@ class Handle:
         elif tipo == 'audio':
             exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
         if tipo == 'smile':
-            exemplos=[":D",":)",";)",":P",":3"]
+            exemplos=[":D",":)",";)",":P",":P",":v","(^^^)"]
         return (random.choice(exemplos)+' -signed bot')
