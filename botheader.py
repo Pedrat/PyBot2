@@ -38,7 +38,7 @@ class Handle:
             exemplos =["http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
         return random.choice(exemplos)
 
-    def get_message(tipo): #Random msg
+    def get_message(tipo): #Random msgs
         if tipo == 'image':
             exemplos= ["Lindo/a","Que giro","Wow"]
         elif tipo == 'video':
