@@ -102,7 +102,7 @@ def message_handler(event):
     elif message.get("text"):
         message = event.message_text
         print(message)
-        if message_text.upper() == (':D' or ':P' or ':)' or ';)'):
+        if message.upper() == (':D' or ':P' or ':)' or ';)'):
             page.send(sender_id,Handle.get_message('smile'))
         else:
             page.send(sender_id, Handle.get_message('text'))
