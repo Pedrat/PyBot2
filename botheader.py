@@ -122,9 +122,19 @@ def received_postback(event):
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
-    elif payload == 'MENU_PAYLOAD1':
-        print("AQUI3")
-        page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     else:
         print("AQUI4")
         page.send(sender_id,"Feito")
+
+
+@page.handle_delivery
+def received_delivery_confirmation(event):
+    delivery = event.delivery
+    message_ids = delivery.get("mids")
+    watermark = delivery.get("watermark")
+
+    if message_ids:
+        for message_id in message_ids:
+            print("Received delivery confirmation for message ID: %s" % message_id)
+
+    print("All message before %s were delivered." % watermark)
