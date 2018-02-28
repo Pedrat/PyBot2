@@ -110,7 +110,7 @@ def message_handler(event):
             page.send(sender_id,Handle.get_message('smile'))
         elif message.upper() ==(';)'):
             page.send(sender_id,Handle.get_message('smile'))
-        elif message.lower() == ('quanto custam os produtos?'): or 'quanto é?' or 'preço'):
+        elif message.lower() == ('quanto custam os produtos?'):
             page.send(sender_id,"o range é de 10 a 100 euros")
         elif message.lower() == ('preço'):
             page.send(sender_id,"o range é de 10 a 100 euros")
