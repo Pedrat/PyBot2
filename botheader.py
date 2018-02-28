@@ -45,8 +45,10 @@ class Handle:
             exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
         elif tipo == 'audio':
             exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
-        if tipo == 'smile':
+        elif tipo == 'smile':
             exemplos=[":D",":)",";)",":P",":P",":v","(^^^)"]
+        elif tipo  == 'text':
+            exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não consigo lhe ajudar..."]
         return (random.choice(exemplos)+' -signed bot')
 
 @page.handle_message
@@ -62,11 +64,18 @@ def message_handler(event):
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
             else:
-                page.send(sender_id,"Imagem")
+                if random.choice(numbergen) == 1:
+                    msg=Handle.get_att('image')
+                    page.send(sender_id,msg)
+                else:
+                    image_url=Handle.get_att('image')
+                    page.send(sender_id,Attachment.Image(image_url))
         elif 'video' in str(message.get("attachments")):
-            page.send(sender_id,'VIDEO')
+            msg=Handle.get_message('video')
+            page.send(sender_id,msg)
         elif 'audio' in str(message.get("attachments")):
-            page.send(sender_id,"audio")
+            msg=Handle.get_message('audio')
+            page.send(sender_id,msg)
         elif 'file' in str(message.get("attachments")):
             page.send(sender_id,"Files são dubios")
         else:
@@ -75,7 +84,8 @@ def message_handler(event):
         page.send(sender_id, "QuickReply")
     elif message.get("text"):
         message = event.message_text
-        page.send(sender_id, "Thank you!")
+        print(message)
+        page.send(sender_id, Handle.get_message('text'))
 
 
 
