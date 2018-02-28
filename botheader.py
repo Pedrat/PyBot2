@@ -101,7 +101,10 @@ def message_handler(event):
         page.send(sender_id,video_url)
     elif message.get("text"):
         message = event.message_text
-        print(message,"TESTE")
+        print(message)
+        if message_text == (':D' or ':P' or ':)' or ';)'):
+            page.send(sender_id,Handle.get_message('smile'))
+        else:
         page.send(sender_id, Handle.get_message('text'))
 
 
