@@ -89,7 +89,7 @@ def message_handler(event):
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
         video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
-        page.send(sender_id,Attachment.Video(video_url))
+        page.send(sender_id,video_url)
     elif message.get("text"):
         message = event.message_text
         print(message)
