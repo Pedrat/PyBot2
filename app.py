@@ -28,7 +28,7 @@ def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     # Processa msg
     page.handle_webhook(request.get_data(as_text=True), message=message_handler)
-
+    return "ok", 200
 def message_handler(event):
     sender_id = event.sender_id
     message = event.message_text
