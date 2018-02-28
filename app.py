@@ -27,6 +27,22 @@ def webhook():
     log(data)
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     # Processa msg
+    page.handle_webhook(request.get_data(as_text=True), message=message_handler)
+
+def message_handler(event):
+    sender_id = event.sender_id
+    message = event.message_text
+    page.send(sender_id, "Thank you!")
+
+def after_send(payload, response):
+    print("y0")
+
+
+
+
+
+
+    '''
     if data["object"] == "page":
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
@@ -91,10 +107,10 @@ def webhook():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-
                     pass
 
     return "ok", 200
+    '''
 #Teste2
 '''
 @page.callback(['PICK_(.+)'])
@@ -107,7 +123,7 @@ def callback_clicked_button(payload, event):
 
 @page.callback(['START_PAYLOAD'])
 def start_callback(payload="START_PAYLOAD"):
-  print("Let's start!!!!!!!!!1")
+  print("Let's start!Test")
 
 @page.callback(['MENU_PAYLOAD/(.+)'])
 def click_persistent_menu(payload, event):
@@ -129,10 +145,6 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
 
-
-
-def callback(payload, response):
-  print('response : ' + response.text)
 
 
 if __name__ == '__main__':
