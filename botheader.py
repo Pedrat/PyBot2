@@ -57,7 +57,12 @@ def message_handler(event):
     page.typing_on(sender_id)
     if message.get("attachments"):
         print("TESTE",message.get("attachments"),"TESTE")
-        page.send(sender_id,"Imagem")
+        if 'image' in str(message.get("attachments")):
+            page.send(sender_id,"Imagem")
+        elif 'video' in str(message.get("attachments")):
+            page.send(sender_id,'VIDEO')
+        elif 'audio' in str(message.get("attachments")):
+            page.send(sender_id,"audio")
     elif message.get("quick_reply"):
         page.send(sender_id, "QuickReply")
     elif message.get("text"):
