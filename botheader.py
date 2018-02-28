@@ -49,6 +49,21 @@ class Handle:
             exemplos=[":D",":)",";)",":P",":P",":v","(^^^)"]
         return (random.choice(exemplos)+' -signed bot')
 
+@page.handle_message
+def message_handler(event):
+    sender_id = event.sender_id
+    timestamp = event.timestamp
+    message = event.message
+    page.typing_on(sender_id)
+    if message.get("attachments"):
+        page.send(sender_id,"Imagem")
+    elif message.get("quick_reply"):
+        page.send(sender_id, "QuickReply")
+    elif message.get("text"):
+        message = event.message_text
+        page.send(sender_id, "Thank you!")
+
+
 
 
 @page.handle_postback
