@@ -84,6 +84,7 @@ def message_handler(event):
         else:
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
+        print("TESTEEE",message.get("quick_reply"),"TESTEEE")
         page.send(sender_id, "QuickReply")
     elif message.get("text"):
         message = event.message_text
