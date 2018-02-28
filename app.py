@@ -30,7 +30,7 @@ def webhook():
     payload = request.get_data(as_text=True)
     print(payload)
     # Processa msg
-    page.handle_webhook(payload, message=message_handler)
+    page.handle_webhook(payload)
     return "ok", 200
 
 
