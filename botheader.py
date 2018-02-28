@@ -102,15 +102,37 @@ def message_handler(event):
     elif message.get("text"):
         message = event.message_text
         print(message)
-        if message.upper() == (':D' or ':P' or ':)' or ';)'):
+        if message.upper() == (':D'):
             page.send(sender_id,Handle.get_message('smile'))
-        elif message.lower() == ('quanto custam os produtos?'or 'quanto é?' or 'preço'):
+        elif message.upper() ==(':P'):
+            page.send(sender_id,Handle.get_message('smile'))
+        elif message.upper() ==(':)'):
+            page.send(sender_id,Handle.get_message('smile'))
+        elif message.upper() ==(';)'):
+            page.send(sender_id,Handle.get_message('smile'))
+        elif message.lower() == ('quanto custam os produtos?'): or 'quanto é?' or 'preço'):
             page.send(sender_id,"o range é de 10 a 100 euros")
-        elif message.lower() == ('ola' or 'boa tarde' or 'bom dia' or 'boa noite'):            
+        elif message.lower() == ('preço'):
+            page.send(sender_id,"o range é de 10 a 100 euros")
+        elif message.lower() == ('ola'):            
             page.send(sender_id,"Saudações")
-        elif message.lower() == ('qual o segredo da vida?' or 'qual o proposito de viver' or 'existe um suprasumo da sapiencia?'):
+        elif message.lower() == ('boa tarde'):            
+            page.send(sender_id,"Saudações")
+        elif message.lower() == ('bom dia'):            
+            page.send(sender_id,"Saudações")
+        elif message.lower() == ('boa noite'):            
+            page.send(sender_id,"Saudações")
+        elif message.lower() == ('qual o segredo da vida?'):
             page.send(sender_id, "a resposta é sempre DARIO")
-        elif message.lower() == (('como te chamas?') or ('quem és tu?') or ('quem és tú?') or ('qual o teu nome?')):
+        elif message.lower() == ('qual o proposito de viver'):
+            page.send(sender_id, "a resposta é sempre DARIO")
+        elif message.lower() == ('existe um suprasumo da sapiencia?'):
+            page.send(sender_id, "a resposta é sempre DARIO")
+        elif message.lower() == ('como te chamas?'):
+            page.send(sender_id, "eu sou o Bot, um robot simpático")
+        elif message.lower() == ('quem és tu?'):
+            page.send(sender_id, "eu sou o Bot, um robot simpático")
+        elif message.lower() == ('qual o teu nome?'):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message.lower() == ('gostas de pigoitinhas?'): 
             page.send(sender_id, "eu sim, o marco só deles duros")
