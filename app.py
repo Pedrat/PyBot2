@@ -58,7 +58,7 @@ def webhook():
                             page.send(sender_id,"Qual e o teu tipo de musica favorito?",quick_replies=quickReply.quick_replies1,metadata="Test")
                     if messaging_event['message'].get('attachments'):
                         sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
-                        recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
+                        recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da paginaa
                         teste=messaging_event["message"]["attachments"] #Para ver o type
                         if 'image' in str(teste[0]):
                             if '369239263222822' in str(teste[0]):
