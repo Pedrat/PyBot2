@@ -65,7 +65,7 @@ def message_handler(event):
     message = event.message
     page.typing_on(sender_id)
     if message.get("attachments"):
-        print("TESTE",message.get("attachments"),"TESTE")
+        #print("TESTE",message.get("attachments"),"TESTE")
         if 'image' in str(message.get("attachments")):
             if '369239263222822' in str(message.get("attachments")):
                 image_url=Handle.get_att('thumbs')
@@ -88,10 +88,7 @@ def message_handler(event):
         else:
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
-        #print("TESTEEE",message.get("quick_reply"),"TESTEEE")
-        #print("$$$$$$debug&&",(message.get("quick_reply")).get('payload'))
-        #page.send(sender_id, "QuickReply")
-        video_url=quickReply.get_music(message.get("quick_reply")).get('payload'))
+        video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
         page.send(sender_id,Attachment.Video(video_url))
     elif message.get("text"):
         message = event.message_text
@@ -113,10 +110,3 @@ def received_postback(event):
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     if payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
-
-'''
-page.send(recipient_id,
-          "What's your favorite movie genre?",
-          quick_replies=quick_replies,
-          metadata="DEVELOPER_DEFINED_METADATA")
-'''
