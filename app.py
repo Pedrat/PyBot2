@@ -32,15 +32,6 @@ def webhook():
     # Processa msg
     page.handle_webhook(payload, message=message_handler)
     return "ok", 200
-def message_handler(event):
-    sender_id = event.sender_id
-    page.typing_on(sender_id)
-    if event.is_*:
-        page.send(sender_id,"Imagem")
-    else:
-        message = event.message_text
-        page.send(sender_id, "Thank you!")
-
 
 
 
