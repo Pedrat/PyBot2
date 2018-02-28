@@ -75,9 +75,7 @@ def message_handler(event):
     message = event.message
     page.typing_on(sender_id)
     if message.get("attachments"):
-        #print("TESTE",message.get("attachments"),"TESTE")
         if 'image' in str(message.get("attachments")):
-            #print((message.get("attachments")).get("type"))
             if '369239263222822' in str(message.get("attachments")):
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
@@ -119,5 +117,7 @@ def received_postback(event):
           % (sender_id, recipient_id, payload, time_of_postback))
     if payload == "START_PAYLOAD":
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
-    if payload == "MUSIC_PAYLOAD":
+    elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+    elif payload == 'MENU_PAYLOAD/(.+)':
+        page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
