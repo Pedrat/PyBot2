@@ -23,17 +23,25 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    data = request.get_json()
-    log(data)
+    #data = request.get_json()
+    #log(data)
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     payload = request.get_data(as_text=True)
+    print(payload)
     # Processa msg
     page.handle_webhook(payload, message=message_handler)
     return "ok", 200
 def message_handler(event):
     sender_id = event.sender_id
-    message = event.message_text
-    page.send(sender_id, "Thank you!")
+    if event.is_image:
+        page.send(sender_id,"Imagem")
+    else
+        message = event.message_text
+        page.send(sender_id, "Thank you!")
+
+
+
+
 
 def after_send(payload, response):
     print("y0")
