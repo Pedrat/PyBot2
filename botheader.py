@@ -119,5 +119,5 @@ def received_postback(event):
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
-    elif payload == 'MENU_PAYLOAD':
+    elif payload == 'MENU_PAYLOAD1':
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
