@@ -9,17 +9,20 @@ from pymessager.message import Messager
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 
-
-
 class buttons:
     btn1 = [
       Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
       Template.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
       Template.ButtonPhoneNumber("Call Phone Number", "+16505551234")
     ]
+    btnmenu = [
+        Template.ButtonPostBack("Musica", "MUSIC_PAYLOAD"),
+        Template.ButtonPostBack('"Produtos recreativos"',"PROD_PAYLOAD"),
+        Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
+    ]
 
 class quickReply:
-        quick_replies1 = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
+        quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                         {'title': "Rn'B", 'payload': 'PICK_RnB'},
                         {'title': 'Pop', 'payload': 'PICK_POP'},
                         {'title': 'Indie', 'payload': 'PICK_INDIE'},
@@ -88,8 +91,6 @@ def message_handler(event):
         page.send(sender_id, Handle.get_message('text'))
 
 
-
-
 @page.handle_postback
 def received_postback(event):
     sender_id = event.sender_id
@@ -100,5 +101,14 @@ def received_postback(event):
 
     print("Received postback for user %s and page %s with payload '%s' at %s"
           % (sender_id, recipient_id, payload, time_of_postback))
+    if payload == "START_PAYLOAD":
+        page.send(sender_id,Template.Buttons(msg,buttons.btnmenu))
+    if payload == "MUSIC_PAYLOAD":
+        page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
 
-    page.send(sender_id, "Postback called")
+'''
+page.send(recipient_id,
+          "What's your favorite movie genre?",
+          quick_replies=quick_replies,
+          metadata="DEVELOPER_DEFINED_METADATA")
+'''
