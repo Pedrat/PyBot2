@@ -142,9 +142,12 @@ def received_postback(event):
 
     page.send(sender_id, "Postback called")
 '''
-@page.callback(['DEVELOPED_DEFINED_PAYLOAD'])
-def callback_clicked_button(payload, event):
-    print(payload, event)
+@page.callback(['MENU_PAYLOAD/(.+)'])
+def click_persistent_menu(payload, event):
+  click_menu = payload.split('/')[1]
+  if click_menu == 2:
+      page.send(sender_id,"Y0")
+  print("you clicked %s menu" % click_menu)
 
 @page.handle_delivery
 def received_delivery_confirmation(event):
