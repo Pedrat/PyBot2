@@ -23,10 +23,8 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    #data = request.get_json()
-    #log(data)
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
-    #page.show_starting_button("START_PAYLOAD")
+    page.show_starting_button("START_PAYLOAD")
     page.show_persistent_menu([Template.ButtonPostBack('Menu', 'MENU_PAYLOAD1'),Template.ButtonPostBack('MENU2', 'MENU_PAYLOAD/2')])
     payload = request.get_data(as_text=True)
     print(payload)
