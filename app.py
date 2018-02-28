@@ -35,12 +35,8 @@ def webhook():
 
 
 
-def after_send(payload, response):
-    print("y0")
-
-
-
-
+#def after_send(payload, response):
+#    print("y0")
     '''
     if data["object"] == "page":
         for entry in data["entry"]:
@@ -132,7 +128,7 @@ def click_persistent_menu(payload, event):
 def callback_clicked_button(payload, event):
     print(payload, event)
 '''
-
+'''
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     try:
         if type(msg) is dict:
@@ -143,7 +139,7 @@ def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
     except:
         pass  # squash logging errors in case of non-ascii text
     sys.stdout.flush()
-
+'''
 
 
 if __name__ == '__main__':

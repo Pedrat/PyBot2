@@ -56,6 +56,7 @@ def message_handler(event):
     message = event.message
     page.typing_on(sender_id)
     if message.get("attachments"):
+        print("TESTE",message.get("attachments"),"TESTE")
         page.send(sender_id,"Imagem")
     elif message.get("quick_reply"):
         page.send(sender_id, "QuickReply")
