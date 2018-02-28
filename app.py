@@ -147,6 +147,11 @@ def start_callback(payload="START_PAYLOAD"):
 def click_persistent_menu(payload, event):
   click_menu = payload.split('/')[1]
   print("you clicked %s menu" % click_menu)
+@page.callback(['START_PAYLOAD'])
+def callback_clicked_button(payload, event):
+    print(payload, event)
+
+
 
 
 def log(msg, *args, **kwargs):  # simple wrapper for logging to stdout on heroku
