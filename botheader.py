@@ -77,7 +77,7 @@ def message_handler(event):
     if message.get("attachments"):
         #print("TESTE",message.get("attachments"),"TESTE")
         if 'image' in str(message.get("attachments")):
-            print((message.get("attachments")).get("type"))
+            #print((message.get("attachments")).get("type"))
             if '369239263222822' in str(message.get("attachments")):
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
