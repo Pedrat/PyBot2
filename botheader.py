@@ -58,11 +58,18 @@ def message_handler(event):
     if message.get("attachments"):
         print("TESTE",message.get("attachments"),"TESTE")
         if 'image' in str(message.get("attachments")):
+            if '369239263222822' in str(message.get("attachments")):
+                image_url=Handle.get_att('thumbs')
+                page.send(sender_id,image_url)
             page.send(sender_id,"Imagem")
         elif 'video' in str(message.get("attachments")):
             page.send(sender_id,'VIDEO')
         elif 'audio' in str(message.get("attachments")):
             page.send(sender_id,"audio")
+        elif 'file' in str(message.get("attachments")):
+            page.send(sender_id,"Files são dubios")
+        else:
+            page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
         page.send(sender_id, "QuickReply")
     elif message.get("text"):
