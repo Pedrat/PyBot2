@@ -5,7 +5,8 @@ from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
 from pymessager.message import Messager
-from botheader import buttons, Handle, quickReply
+from botheader import buttons, Handle, quickRepl
+import botheader
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 client = Messager(token)
@@ -37,19 +38,6 @@ def message_handler(event):
 
 def after_send(payload, response):
     print("y0")
-
-@page.handle_postback
-def received_postback(event):
-    sender_id = event.sender_id
-    recipient_id = event.recipient_id
-    time_of_postback = event.timestamp
-
-    payload = event.postback_payload
-
-    print("Received postback for user %s and page %s with payload '%s' at %s"
-          % (sender_id, recipient_id, payload, time_of_postback))
-
-    page.send(sender_id, "Postback called")
 
 
 
