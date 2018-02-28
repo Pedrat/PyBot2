@@ -110,9 +110,9 @@ def message_handler(event):
             page.send(sender_id,Handle.get_message('preco'))
         elif message.lower() == ('ola' or 'boa tarde' or 'bom dia' or 'boa noite'):            
             page.send(sender_id,"Saudações")
-        elif message.lower() == ("deus tem nome?" or "qual o nome de deus?" or "qual o segredo da vida?"):
-            page.send(sender_id, "dario!")
-        elif message.lower() == ("como te chamas?" or "quem és tu?" or "quem és tú?" or "qual o teu nome?"):
+        elif message.lower() == ('qual o segredo da vida?' or 'qual o proposito de viver' or 'existe um suprasumo da sapiencia?'):
+            page.send(sender_id, "a resposta é sempre DARIO")
+        elif message.lower() == ('como te chamas?' or 'quem és tu?' or 'quem és tú?' or 'qual o teu nome?'):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
 
         else:
