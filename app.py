@@ -94,6 +94,10 @@ def webhook():
                         sender_id = messaging_event["sender"]["id"]        # O facebook ID da pessoa
                         recipient_id = messaging_event["recipient"]["id"]  # O recipient's ID da pagina
                         teste=messaging_event["message"]["attachments"] #Para ver o type
+                        if ('image' and '369239263222822') in str(teste[0]):
+                            #image_url=get_att('thumbs')
+
+                            page.send(sender_id,Attachment.Image("http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"))
                         if 'image' in str(teste[0]):
                             if random.choice(numbergen) == 1:
                                 msg=get_message('image')
@@ -101,9 +105,6 @@ def webhook():
                             else:
                                 image_url=get_att('image')
                                 page.send(sender_id,Attachment.Image(image_url))
-                        elif('image' and '369239263222822') in str(teste[0]):
-                            msg=get_att('thumbs')
-                            page.send(sender_id,Attachment.Image(image_url))
                         elif 'file' in str(teste[0]):
                             msg="Files são dubios"
                             page.send(sender_id,msg)
@@ -163,7 +164,7 @@ def get_att(tipo):
     if tipo == 'image':
         exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543","https://vignette.wikia.nocookie.net/harrypotter/images/2/27/Happy-guy-thumbs-up-300x237.gif/revision/latest?cb=20121019041406"]
 
-    if tipo == 'smile':
+    if tipo == 'thumbs':
         exemplos =["http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
     return random.choice(exemplos)
 
