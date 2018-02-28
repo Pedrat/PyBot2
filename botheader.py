@@ -63,9 +63,7 @@ class Handle:
         elif tipo == 'audio':
             exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
         elif tipo == 'smile':
-            exemplos=[":D",":)",";)",":P",":P",":v","(^^^)"]
-        elif tipo == 'preco':
-            exemplos[" os preços vão de 10€ a 100€ dependendo do preco do produto, os meus donos transmitir-lhe-ao essa informação"]        
+            exemplos=[":D",":)",";)",":P",":P",":v","(^^^)"]        
         elif tipo  == 'text':
             exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
         return (random.choice(exemplos)+' -signed bot')
@@ -106,8 +104,8 @@ def message_handler(event):
         print(message)
         if message.upper() == (':D' or ':P' or ':)' or ';)'):
             page.send(sender_id,Handle.get_message('smile'))
-        elif message.lower() == ('quanto custam os produtos'or 'quanto é?' or 'preço'):
-            page.send(sender_id,Handle.get_message('preco'))
+        elif message.lower() == ('quanto custam os produtos?'or 'quanto é?' or 'preço'):
+            page.send(sender_id,"o range é de 10 a 100 euros")
         elif message.lower() == ('ola' or 'boa tarde' or 'bom dia' or 'boa noite'):            
             page.send(sender_id,"Saudações")
         elif message.lower() == ('qual o segredo da vida?' or 'qual o proposito de viver' or 'existe um suprasumo da sapiencia?'):
