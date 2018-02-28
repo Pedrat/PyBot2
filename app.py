@@ -26,8 +26,9 @@ def webhook():
     data = request.get_json()
     log(data)
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
+    payload = request.get_data(as_text=True)
     # Processa msg
-    page.handle_webhook(request.get_data(as_text=True), message=message_handler)
+    page.handle_webhook(payload, message=message_handler)
     return "ok", 200
 def message_handler(event):
     sender_id = event.sender_id
@@ -37,7 +38,18 @@ def message_handler(event):
 def after_send(payload, response):
     print("y0")
 
+@page.handle_postback
+def received_postback(event):
+    sender_id = event.sender_id
+    recipient_id = event.recipient_id
+    time_of_postback = event.timestamp
 
+    payload = event.postback_payload
+
+    print("Received postback for user %s and page %s with payload '%s' at %s"
+          % (sender_id, recipient_id, payload, time_of_postback))
+
+    page.send(sender_id, "Postback called")
 
 
 
