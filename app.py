@@ -35,7 +35,7 @@ def message_handler(event):
     sender_id = event.sender_id
     if event.is_image:
         page.send(sender_id,"Imagem")
-    else
+    else:
         message = event.message_text
         page.send(sender_id, "Thank you!")
 
