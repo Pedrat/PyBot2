@@ -97,7 +97,7 @@ def webhook():
                         #if ('image' and '369239263222822') in str(teste[0]):
                         #image_url=get_att('thumbs')
                             #page.send(sender_id,Attachment.Image(image_url))
-                        elif 'image' in str(teste[0]):
+                        if 'image' in str(teste[0]):
                             if '369239263222822' in str(teste[0]):
                                 image_url=get_att('thumbs')
                                 page.send(sender_id,Attachment.Image(image_url))
