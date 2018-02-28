@@ -85,6 +85,7 @@ def message_handler(event):
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
         print("TESTEEE",message.get("quick_reply"),"TESTEEE")
+        print("$$$$$$debug&&",message.quick_reply_payload)
         page.send(sender_id, "QuickReply")
     elif message.get("text"):
         message = event.message_text
