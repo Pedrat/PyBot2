@@ -64,7 +64,7 @@ def message_handler(event):
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
             else:
-                if get_num() == 1:
+                if Handle.get_num() == 1:
                     msg=Handle.get_att('image')
                     page.send(sender_id,msg)
                 else:
