@@ -22,7 +22,7 @@ class quickReply:
                         {'title': 'Metal', 'payload': 'PICK_METAL'}]
 
 class Handle:
-    def get_num:
+    def get_num():
         numbergen=[1,2]
         return random.choice(numbergen)
     def get_att(tipo):
