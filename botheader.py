@@ -15,9 +15,7 @@ vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma supra
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
 perg_servc=["posso saber mais sobre um serviço"?, "que serviços têm em particular"]
- 
-
-
+smile=[":D",":P",":)",";)",":*"]
 
 class buttons:
     btn1 = [
@@ -73,7 +71,7 @@ class Handle:
         elif tipo == 'audio':
             exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
         elif tipo == 'smile':
-            exemplos=[":D",":)",";)",":P",":P",":v","(^^^)"]
+            return random.choice(smile)
         elif tipo  == 'text':
             exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
         return (random.choice(exemplos)+' -signed bot')
@@ -113,10 +111,8 @@ def message_handler(event):
         message = event.message_text
         print(message)
         message = unicodedata.normalize('NFKD', message).encode('ASCII', 'ignore').decode().lower()
-        if message.upper() == (':D' or ':P' or ':)' or ';)' or ':*'):
+        if message.upper() in smile:
             page.send(sender_id,Handle.get_message('smile'))
-
-
         elif message in QuestaoPreco:
             page.send(sender_id,"o range é de 10 a 100 euros")
         elif message in saudacoes:
@@ -140,9 +136,7 @@ def received_postback(event):
     sender_id = event.sender_id
     recipient_id = event.recipient_id
     time_of_postback = event.timestamp
-    #print("AQUI")
     payload = event.postback_payload
-    #print("AQUI2")
     print("Received postback for user %s and page %s with payload '%s' at %s"
           % (sender_id, recipient_id, payload, time_of_postback))
     if payload == "START_PAYLOAD":
@@ -152,23 +146,8 @@ def received_postback(event):
     elif payload == "AJUDA_PAYLOAD":
         page.send(sender_id,"Eu posso fazer muitas coisas!! Mas não sou o mais esperto, mas tenho, por exemplo, isto:\n",quick_replies=quickReply.quick_musica,metadata="TESTE")
     else:
-        #print("AQUI4")
         page.send(sender_id,"Feito")
 
-'''
-@page.handle_postback
-def received_postback(event):
-    sender_id = event.sender_id
-    recipient_id = event.recipient_id
-    time_of_postback = event.timestamp
-
-    payload = event.postback_payload
-
-    print("Received postback for user %s and page %s with payload '%s' at %s"
-          % (sender_id, recipient_id, payload, time_of_postback))
-
-    page.send(sender_id, "Postback called")
-'''
 @page.callback(['MENU_PAYLOAD/(.+)'])
 def click_persistent_menu(payload, event):
   click_menu = payload.split('/')[1]
@@ -185,7 +164,6 @@ def received_delivery_confirmation(event):
     if message_ids:
         for message_id in message_ids:
             print("Received delivery confirmation for message ID: %s" % message_id)
-
     print("All message before %s were delivered." % watermark)
 
 
