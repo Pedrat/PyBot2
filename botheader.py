@@ -6,6 +6,10 @@ from datetime import datetime
 from flask import Flask, request
 from pymessager.message import Messager
 
+
+#ID Pedro = 1838746479497346
+#ID Catia = 2199242023423175
+
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
@@ -16,6 +20,7 @@ nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
 perg_servc=["posso saber mais sobre um serviço?", "que serviços têm em particular?"]
 smile=[":D",":P",":)",";)",":*"]
+moderator = [1838746479497346,2199242023423175]
 
 class buttons:
     btn1 = [
@@ -133,6 +138,8 @@ def message_handler(event):
         else:
             msg = Handle.get_message('text')
             page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
+            for x in moderator:
+                page.send(x,"Ocorreu um problema hoje, não soube responder a algo. Sorry :()")
 @page.handle_postback
 def received_postback(event):
     sender_id = event.sender_id
@@ -145,30 +152,16 @@ def received_postback(event):
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
-    elif payload == "AJUDA_PAYLOAD":
-        page.send(sender_id,"Eu posso fazer muitas coisas!! Mas não sou o mais esperto, mas tenho, por exemplo, isto:\n",quick_replies=quickReply.quick_musica,metadata="TESTE")
     else:
         page.send(sender_id,"Feito")
-
-@page.callback(['MENU_PAYLOAD/(.+)'])
-def click_persistent_menu(payload, event):
-  click_menu = payload.split('/')[1]
-  if click_menu == 2:
-      page.send(sender_id,"Y0")
-  print("you clicked %s menu" % click_menu)
 
 @page.handle_delivery
 def received_delivery_confirmation(event):
     delivery = event.delivery
     message_ids = delivery.get("mids")
-    watermark = delivery.get("watermark")
-
     if message_ids:
         for message_id in message_ids:
             print("Received delivery confirmation for message ID: %s" % message_id)
-    print("All message before %s were delivered." % watermark)
-
-
 
 @page.handle_read
 def received_message_read(event):
