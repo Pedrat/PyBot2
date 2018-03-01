@@ -14,7 +14,7 @@ saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
-perg_servc=["posso saber mais sobre um serviço"?, "que serviços têm em particular"]
+perg_servc=["posso saber mais sobre um serviço?", "que serviços têm em particular?"]
 smile=[":D",":P",":)",";)",":*"]
 
 class buttons:
