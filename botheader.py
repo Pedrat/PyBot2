@@ -120,7 +120,7 @@ def message_handler(event):
         else:
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
-        if (message.get("quickReply")).get("payload") == "PICK_MENU":
+        if "PICK_MENU" in str(message.get("quick_reply")):
             page.send(sender_id,"OLA FEITO")
         else:
             video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
