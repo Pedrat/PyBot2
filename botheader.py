@@ -1,5 +1,5 @@
 # coding=utf-8
-import os,sys,json,random,requests
+import os,sys,json,random,requests,unicodedata
 from fbmq import Page, Attachment, QuickReply, utils
 from fbmq import template as Template
 from datetime import datetime
@@ -112,30 +112,49 @@ def message_handler(event):
         elif message.upper() ==(';)'):
             page.send(sender_id,Handle.get_message('smile'))
             '''
-        elif message.lower() == ('quanto custam os produtos?'):
+
+#Quais são as opções de pagamento
+#Qual é a data mais proxima que estão disponiveis para marcar um compromisso?
+#Têm disponibilidade para maarcar um compromisso hoje?
+#Têm apoio ao cliente?
+#QuestaoPaga=["quais sao as opcoes de pagamento","como posso pagar","pagar"]
+#QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
+#saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
+#vida = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
+#nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
+
+        message = unicodedata.normalize('NFKD', message).encode('ASCII', 'ignore').decode().lower()
+        elif message in QuestaoPreco:
+        #elif message.lower() == ('quanto custam os produtos?'):
             page.send(sender_id,"o range é de 10 a 100 euros")
-        elif message.lower() == ('preço'):
-            page.send(sender_id,"o range é de 10 a 100 euros")
-        elif message.lower() == ('ola'):
+        #elif message.lower() == ('preço'):
+        #    page.send(sender_id,"o range é de 10 a 100 euros")
+        elif message in saudacoes:
             page.send(sender_id,"Saudações")
+'''
         elif message.lower() == ('boa tarde'):
             page.send(sender_id,"Saudações")
         elif message.lower() == ('bom dia'):
             page.send(sender_id,"Saudações")
         elif message.lower() == ('boa noite'):
             page.send(sender_id,"Saudações")
-        elif message.lower() == ('qual o segredo da vida?'):
+'''
+        elif message in vida:
             page.send(sender_id, "a resposta é sempre DARIO")
+'''
         elif message.lower() == ('qual o proposito de viver'):
             page.send(sender_id, "a resposta é sempre DARIO")
         elif message.lower() == ('existe um suprasumo da sapiencia?'):
             page.send(sender_id, "a resposta é sempre DARIO")
-        elif message.lower() == ('como te chamas?'):
+'''
+        elif message in nome:
             page.send(sender_id, "eu sou o Bot, um robot simpático")
+'''
         elif message.lower() == ('quem és tu?'):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message.lower() == ('qual o teu nome?'):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
+'''
         elif message.lower() == ('gostas de pigoitinhas?'):
             page.send(sender_id, "eu sim, o marco só deles duros")
         else:
