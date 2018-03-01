@@ -26,7 +26,6 @@ class buttons:
         Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
     ]
 
-class quickReply:
         quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                         {'title': "Rn'B", 'payload': 'PICK_RnB'},
                         {'title': 'Pop', 'payload': 'PICK_POP'},
@@ -146,20 +145,6 @@ def received_postback(event):
         #print("AQUI4")
         page.send(sender_id,"Feito")
 
-'''
-@page.handle_postback
-def received_postback(event):
-    sender_id = event.sender_id
-    recipient_id = event.recipient_id
-    time_of_postback = event.timestamp
-
-    payload = event.postback_payload
-
-    print("Received postback for user %s and page %s with payload '%s' at %s"
-          % (sender_id, recipient_id, payload, time_of_postback))
-
-    page.send(sender_id, "Postback called")
-'''
 @page.callback(['MENU_PAYLOAD/(.+)'])
 def click_persistent_menu(payload, event):
   click_menu = payload.split('/')[1]
