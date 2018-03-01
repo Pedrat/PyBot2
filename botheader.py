@@ -118,20 +118,8 @@ def message_handler(event):
             page.send(sender_id,"Saudações")
         elif message in vidal:
             page.send(sender_id, "a resposta é sempre DARIO")
-'''
-        elif message.lower() == ('qual o proposito de viver'):
-            page.send(sender_id, "a resposta é sempre DARIOs")
-        elif message.lower() == ('existe um suprasumo da sapiencia?'):
-            page.send(sender_id, "a resposta é sempre DARIO")
-'''
         elif message in nome:
             page.send(sender_id, "eu sou o Bot, um robot simpático")
-'''
-        elif message.lower() == ('quem és tu?'):
-            page.send(sender_id, "eu sou o Bot, um robot simpático")
-        elif message.lower() == ('qual o teu nome?'):
-            page.send(sender_id, "eu sou o Bot, um robot simpático")
-'''
         elif message == ('gostas de pigoitinhas?'):
             page.send(sender_id, "eu sim, o marco só deles duros")
         else:
