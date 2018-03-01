@@ -126,7 +126,7 @@ def message_handler(event):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message == ('gostas de pigoitinhas?'):
             page.send(sender_id, "eu sim, o marco só deles duros")
-        elif message in per_area:
+        elif message in perg_area:
             page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         else:
             page.send(sender_id, Handle.get_message('text'))
