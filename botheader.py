@@ -107,33 +107,13 @@ def message_handler(event):
     elif message.get("text"):
         message = event.message_text
         print(message)
+        message = unicodedata.normalize('NFKD', message).encode('ASCII', 'ignore').decode().lower()
         if message.upper() == (':D' or ':P' or ':)' or ';)' or ':*'):
             page.send(sender_id,Handle.get_message('smile'))
-            '''
-        elif message.upper() ==(':P'):
-            page.send(sender_id,Handle.get_message('smile'))
-        elif message.upper() ==(':)'):
-            page.send(sender_id,Handle.get_message('smile'))
-        elif message.upper() ==(';)'):
-            page.send(sender_id,Handle.get_message('smile'))
-            '''
 
-#Quais são as opções de pagamento
-#Qual é a data mais proxima que estão disponiveis para marcar um compromisso?
-#Têm disponibilidade para maarcar um compromisso hoje?
-#Têm apoio ao cliente?
-#QuestaoPaga=["quais sao as opcoes de pagamento","como posso pagar","pagar"]
-#QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
-#saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
-#vida = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
-#nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 
-        message = unicodedata.normalize('NFKD', message).encode('ASCII', 'ignore').decode().lower()
         elif message in QuestaoPreco:
-        #elif message.lower() == ('quanto custam os produtos?'):
             page.send(sender_id,"o range é de 10 a 100 euros")
-        #elif message.lower() == ('preço'):
-        #    page.send(sender_id,"o range é de 10 a 100 euros")
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
 '''
@@ -160,7 +140,7 @@ def message_handler(event):
         elif message.lower() == ('qual o teu nome?'):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
 '''
-        elif message.lower() == ('gostas de pigoitinhas?'):
+        elif message == ('gostas de pigoitinhas?'):
             page.send(sender_id, "eu sim, o marco só deles duros")
         else:
             page.send(sender_id, Handle.get_message('text'))
