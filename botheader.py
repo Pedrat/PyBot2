@@ -13,15 +13,8 @@ QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
-<<<<<<< HEAD
-smile=[":D",":P",":)",";)",":*"]
-=======
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
- 
-
-
-
->>>>>>> a2776afbdbd0e4e517517b2056b8f4e10d04c2f9
+smile=[":D",":P",":)",";)",":*"]
 class buttons:
     btn1 = [
       Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
