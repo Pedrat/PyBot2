@@ -94,6 +94,8 @@ def message_handler(event):
     page_name = page.page_name
     user_profile = page.get_user_profile(event.sender_id) # return dict
     nomeuser=(user_profile.get("first_name")+" "+user_profile.get("last_name"))
+    print(page_id)
+    print(page_name)
     print(user_profile)
     if message.get("attachments"):
         if 'image' in str(message.get("attachments")):
