@@ -11,7 +11,7 @@ page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento","como posso pagar","pagar"]
 QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
-vida = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
+vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 
 class buttons:
@@ -116,15 +116,7 @@ def message_handler(event):
             page.send(sender_id,"o range é de 10 a 100 euros")
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
-'''
-        elif message.lower() == ('boa tarde'):
-            page.send(sender_id,"Saudações")
-        elif message.lower() == ('bom dia'):
-            page.send(sender_id,"Saudaçõesz")
-        elif message.lower() == ('boa noite'):
-            page.send(sender_id,"Saudações")
-'''
-        elif message in vida:
+        elif message in vidal:
             page.send(sender_id, "a resposta é sempre DARIO")
 '''
         elif message.lower() == ('qual o proposito de viver'):
