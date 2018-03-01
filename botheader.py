@@ -93,8 +93,7 @@ def message_handler(event):
     page_id = page.page_id
     page_name = page.page_name
     user_profile = page.get_user_profile(event.sender_id) # return dict
-    print(user_profile.get("first_name"),"OLAAAA")
-
+    nomeuser=(user_profile.get("first_name")+" "+user_profile.get("last_name"))
     print(user_profile)
     if message.get("attachments"):
         if 'image' in str(message.get("attachments")):
@@ -145,7 +144,7 @@ def message_handler(event):
             msg = Handle.get_message('text')
             page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
             for x in moderator:
-                page.send(x,"Ocorreu um problema hoje, não soube responder a algo. Sorry :(")
+                page.send(x,"Ocorreu um problema hoje, não soube responder a algo que o {} perguntou-me. Sorry :(".format(nomeuser))
 @page.handle_postback
 def received_postback(event):
     sender_id = event.sender_id
