@@ -94,8 +94,8 @@ def message_handler(event):
     page_name = page.page_name
     user_profile = page.get_user_profile(event.sender_id) # return dict
     nomeuser=(user_profile.get("first_name")+" "+user_profile.get("last_name"))
-    print(page_id)
-    print(page_name)
+    #print(page_id)
+    #print(page_name)
     print(user_profile)
     if message.get("attachments"):
         if 'image' in str(message.get("attachments")):
@@ -149,6 +149,8 @@ def message_handler(event):
             page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         elif message in perg_servc:
            page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel")
+        elif message == "menu":
+            page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
         else:
             msg = Handle.get_message('text')
             page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
@@ -170,8 +172,8 @@ def received_postback(event):
         page.send(sender_id,"Pode-me dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
     elif payload == "PROD_PAYLOAD":
         page.send(sender_id,"Vai de 10€ até a 100€")
-    else:
-        page.send(sender_id,"Feito")
+    #else:
+        print("Não soube o que fazer")
 
 @page.handle_delivery
 def received_delivery_confirmation(event):
