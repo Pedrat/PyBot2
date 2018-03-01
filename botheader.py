@@ -120,7 +120,7 @@ def message_handler(event):
         elif message.lower() == ('boa tarde'):
             page.send(sender_id,"Saudações")
         elif message.lower() == ('bom dia'):
-            page.send(sender_id,"Saudações")
+            page.send(sender_id,"Saudaçõesz")
         elif message.lower() == ('boa noite'):
             page.send(sender_id,"Saudações")
 '''
