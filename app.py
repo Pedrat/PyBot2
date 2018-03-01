@@ -25,7 +25,7 @@ def verify():
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!")
     page.show_starting_button("START_PAYLOAD")
-    page.show_persistent_menu([Template.ButtonWeb('Website', 'http://www.cwstudio.pt/')])
+    page.show_persistent_menu([Template.ButtonWeb('Website', 'http://www.cwstudio.pt/'),Template.ButtonPostBack('menu','MENU_PAYLOAD')])
     payload = request.get_data(as_text=True)
     print(payload)
     # Processa msg
