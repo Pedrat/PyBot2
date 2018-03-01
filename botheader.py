@@ -9,12 +9,14 @@ from pymessager.message import Messager
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
-QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
+QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?", "quanto é que os teus serviços custam?"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
+perg_servc=["posso saber mais sobre um serviço"?, "que serviços têm em particular"]
 smile=[":D",":P",":)",";)",":*"]
+
 class buttons:
     btn1 = [
       Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
@@ -126,6 +128,8 @@ def message_handler(event):
             page.send(sender_id, "eu sim, o marco só deles duros")
         elif message in perg_area:
             page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
+        elif message in perg_servc:
+           page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel") 
         else:
             msg = Handle.get_message('text')
             page.send(sender_id, )
