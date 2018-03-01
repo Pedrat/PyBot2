@@ -13,6 +13,10 @@ QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
+perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
+ 
+
+
 
 class buttons:
     btn1 = [
@@ -122,6 +126,8 @@ def message_handler(event):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message == ('gostas de pigoitinhas?'):
             page.send(sender_id, "eu sim, o marco só deles duros")
+        elif message in per_area:
+            page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         else:
             page.send(sender_id, Handle.get_message('text'))
 
