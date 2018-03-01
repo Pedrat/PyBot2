@@ -120,7 +120,7 @@ def message_handler(event):
             page.send(sender_id, "a resposta é sempre DARIO")
 '''
         elif message.lower() == ('qual o proposito de viver'):
-            page.send(sender_id, "a resposta é sempre DARIO")
+            page.send(sender_id, "a resposta é sempre DARIOs")
         elif message.lower() == ('existe um suprasumo da sapiencia?'):
             page.send(sender_id, "a resposta é sempre DARIO")
 '''
