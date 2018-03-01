@@ -121,7 +121,11 @@ def message_handler(event):
             page.send(sender_id,"Já o vou ver! :D")
     elif message.get("quick_reply"):
         if "PICK_MENU" in str(message.get("quick_reply")):
-            page.send(sender_id,"OLA FEITO")
+            page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
+        elif "PICK_MUS" in str(message.get("quick_reply")):
+            page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+        elif "PICK_PRECO" in str(message.get("quick_reply")):
+            page.send(sender_id,"Deste momento não disponibilizamos preços. Obrigado.")
         else:
             video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
             page.send(sender_id,video_url)
@@ -162,6 +166,10 @@ def received_postback(event):
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
         page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+    elif payload == "AJUDA_PAYLOAD":
+        page.send(sender_id,"Pode-me dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
+    elif payload == "PROD_PAYLOAD":
+        page.send(sender_id,"Vai de 10€ até a 100€")
     else:
         page.send(sender_id,"Feito")
 
