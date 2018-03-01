@@ -8,12 +8,20 @@ from pymessager.message import Messager
 
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
-QuestaoPaga=["quais sao as opcoes de pagamento","como posso pagar","pagar"]
+QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
 QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe uma suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
+<<<<<<< HEAD
 smile=[":D",":P",":)",";)",":*"]
+=======
+perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
+ 
+
+
+
+>>>>>>> a2776afbdbd0e4e517517b2056b8f4e10d04c2f9
 class buttons:
     btn1 = [
       Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
@@ -120,6 +128,8 @@ def message_handler(event):
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message == ('gostas de pigoitinhas?'):
             page.send(sender_id, "eu sim, o marco só deles duros")
+        elif message in perg_area:
+            page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         else:
             page.send(sender_id, Handle.get_message('text'))
 
