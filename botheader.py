@@ -129,13 +129,13 @@ def message_handler(event):
         elif message in perg_area:
             page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         elif message in perg_servc:
-           page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel") 
+           page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel")
         else:
             msg = Handle.get_message('text')
             page.send(sender_id, )
             page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
 
-
+#3
 @page.handle_postback
 def received_postback(event):
     sender_id = event.sender_id
