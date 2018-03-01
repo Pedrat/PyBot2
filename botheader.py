@@ -23,11 +23,6 @@ smile=[":D",":P",":)",";)",":*"]
 moderator = [1838746479497346,2199242023423175]
 
 class buttons:
-    btn1 = [
-      Template.ButtonWeb("Open Web URL", "https://www.oculus.com/en-us/rift/"),
-      Template.ButtonPostBack("trigger Postback", "DEVELOPED_DEFINED_PAYLOAD"),
-      Template.ButtonPhoneNumber("Call Phone Number", "+16505551234")
-    ]
     btnmenu = [
         Template.ButtonPostBack("Musica", "MUSIC_PAYLOAD"),
         Template.ButtonPostBack('"Produtos recreativos"',"PROD_PAYLOAD"),
