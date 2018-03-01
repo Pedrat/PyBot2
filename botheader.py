@@ -34,6 +34,9 @@ class quickReply:
                         {'title': 'Indie', 'payload': 'PICK_INDIE'},
                         {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
                         {'title': 'Metal', 'payload': 'PICK_METAL'}]
+        default_menu = [{'title': 'Menu','payload': 'PICK_MENU'},
+                        {'title': 'Preços','payload': 'PICK_PRECO'},
+                        {'title': 'Música do dia','payload':'PICK_MUS'}]
         def get_music(genre):
             if genre == "PICK_ROCK":
                 playlist = ["https://www.youtube.com/watch?v=YR5ApYxkU-U&list=RDYR5ApYxkU-U&t=1","https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDEMbHaAxpOZhcVmmF6I3y0siA","https://www.youtube.com/watch?v=s88r_q7oufE&list=RDEMu-D7kEFynn1tn5qmluVnhw","https://www.youtube.com/watch?v=v2AC41dglnM&list=RDEMDs8vWIQKMflBG8QUQQaUrw"]
@@ -124,7 +127,9 @@ def message_handler(event):
         elif message in perg_area:
             page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         else:
-            page.send(sender_id, Handle.get_message('text'))
+            msg = Handle.get_message('text')
+            page.send(sender_id, )
+            page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
 
 
 @page.handle_postback
