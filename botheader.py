@@ -4,11 +4,7 @@ from fbmq import Page, Attachment, QuickReply, utils
 from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
-from pymessager.message import Messager
 
-
-#ID Pedro = 1838746479497346
-#ID Catia = 2199242023423175
 
 token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
 page = Page(token)
@@ -20,7 +16,7 @@ nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
 perg_servc=["posso saber mais sobre um serviço?", "que servicos tem em particular?","que servicos oferecem?"]
 smile=[":D",":P",":)",";)",":*"]
-moderator = [1838746479497346,2199242023423175]
+moderator = [1838746479497346,2199242023423175] #ID Pedro e Cátia
 
 class buttons:
     btnmenu = [
@@ -157,8 +153,7 @@ def received_postback(event):
     recipient_id = event.recipient_id
     time_of_postback = event.timestamp
     payload = event.postback_payload
-    print("Received postback for user %s and page %s with payload '%s' at %s"
-          % (sender_id, recipient_id, payload, time_of_postback))
+    print("Postback de {} recebido. Payload de :{}".format(sender_id,payload))
     if payload == "START_PAYLOAD":
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
     elif payload == "MUSIC_PAYLOAD":
@@ -167,8 +162,6 @@ def received_postback(event):
         page.send(sender_id,"Pode-me dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
     elif payload == "PROD_PAYLOAD":
         page.send(sender_id,"Vai de 10€ até a 100€")
-    #else:
-        print("Não soube o que fazer")
 
 @page.handle_delivery
 def received_delivery_confirmation(event):
@@ -176,11 +169,8 @@ def received_delivery_confirmation(event):
     message_ids = delivery.get("mids")
     if message_ids:
         for message_id in message_ids:
-            print("Received delivery confirmation for message ID: %s" % message_id)
+            print("O user recebeu a msg nº %s" % message_id)
 
 @page.handle_read
 def received_message_read(event):
-    watermark = event.read.get("watermark")
-    seq = event.read.get("seq")
-
-    print("Received message read event for watermark %s and sequence number %s" % (watermark, seq))
+    print("O user leu a mensagem")

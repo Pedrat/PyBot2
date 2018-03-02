@@ -1,10 +1,11 @@
 # coding=utf-8
+'''
 import os,sys,json,random,requests
 from fbmq import Page, Attachment, QuickReply, utils
 from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
-from pymessager.message import Messager
+'''
 from botheader import buttons, Handle, quickReply
 import botheader
 
