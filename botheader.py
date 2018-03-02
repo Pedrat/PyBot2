@@ -129,7 +129,7 @@ def message_handler(event): #Trabalha as msg
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
         elif message in vidal:
-            page.send(sender_id, "a resposta é sempre DARIO")
+            page.send(sender_id, "a resposta é sempre DARIO\n https://www.youtube.com/watch?v=vTIIMJ9tUc8")
         elif message in nome:
             page.send(sender_id, "eu sou o Bot, um robot simpático")
         elif message == ('gostas de pigoitinhas?'):
@@ -169,6 +169,6 @@ def received_delivery_confirmation(event):
         for message_id in message_ids:
             print("O user recebeu a msg nº %s" % message_id)
 
-@page.handle_read #Para verificar se o user le a msg 
+@page.handle_read #Para verificar se o user le a msg
 def received_message_read(event):
     print("O user leu a mensagem")
