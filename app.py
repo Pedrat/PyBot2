@@ -24,7 +24,7 @@ def verify():
 def webhook():
     page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!") #Info da pagina que o bot disponibiliza
     page.show_starting_button("START_PAYLOAD") #Butão de começar que me deu uma dor de cabeça do clrh
-    page.show_persistent_menu([Template.ButtonWeb('Website', 'https://www.leafly.com/')]) #Mostra um menu todo pimposo ao lado
+    page.show_persistent_menu([Template.ButtonWeb('Website', 'https://www.leafly.com/'),Template.ButtonWeb('Suprasumo da sapiência','https://darioquental.herokuapp.com/get_image')]) #Mostra um menu todo pimposo ao lado
     payload = request.get_data(as_text=True) #Faz um request ao webhook e obtem a data
     print(payload) #Cria o log
     # Processa msg
